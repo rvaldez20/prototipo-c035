@@ -1,7 +1,10 @@
 <?php
 
-   include_once './config.php';
-   include_once './header.php';
+   // include_once 'config.php';
+   include_once 'header.php';
+
+   // requerimos la conexión a la base de datos
+   require "config.php";
 
    // hacemos una consulta para traer los datos de la DB
    $queryResult = $pdo->query("SELECT trabajadores.id, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, trabajadores.rfc, trabajadores.curp, trabajadores.email, negocios.razonsocial FROM trabajadores, negocios WHERE trabajadores.negocioId=negocios.id");

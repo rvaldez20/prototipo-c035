@@ -1,7 +1,10 @@
 <?php
 
-   include_once './config.php';
-   include_once './header.php';
+   // include_once 'config.php';
+   include_once 'header.php';
+
+   // requerimos la conexión a la base de datos
+   require "config.php";
 
    
    // obtenemos el catalogo de los negocios dados de alta en la DB
