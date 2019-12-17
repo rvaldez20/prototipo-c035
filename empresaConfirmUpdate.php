@@ -1,7 +1,10 @@
 <?php
 
-   include_once './config.php';
-   include_once './header.php';
+   // include_once 'config.php';
+   include_once 'header.php';
+
+   // requerimos la conexión a la base de datos
+   require "config.php";
 
    $id = $_POST['id'];
    $negocioNew = $_POST['negocio'];

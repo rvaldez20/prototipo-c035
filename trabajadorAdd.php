@@ -74,18 +74,18 @@
             <div class="col-md-6">
                <!-- SELECT  -->
                <div class="form-group">
-               <label for="negocio">Negocio <span class="badge badge-info">( * )</span></label>
-               <select class="form-control" id="negocio" name="negocio">
+                  <label for="negocio">Negocio <span class="badge badge-info">( * )</span></label>
+                  <select class="form-control" id="negocio" name="negocio">
 
-                  <?php
-                     
-                     while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<option >' . $row['razonsocial'] . '</option>';
-                     }
+                     <?php
+                        
+                        while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
+                           echo '<option >' . $row['razonsocial'] . '</option>';
+                        }
 
-                  ?>
-                     
-               </select>
+                     ?>
+                        
+                  </select>
                </div>
             </div>  
 

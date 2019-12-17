@@ -1,7 +1,23 @@
 <?php
 
-   include_once 'config.php';
+   // include_once 'config.php';
    include_once 'header.php';
+
+   // requerimos la conexión a la base de datos
+   require "config.php";
+
+   // $hoy = getdate();
+   // echo date("F j, Y, g:i a");    
+   // echo "<br>";
+   // var_dump($hoy);
+
+   // $dateTime = new DateTime();
+   // $dateTime->setTimeZone(new DateTimeZone('Mexico/BajaNorte'));
+   // return $dateTime->format('T');
+   // echo $dateTime;
+
+   // obtenemos el catalogo de trabajadores
+   $queryResult = $pdo->query("SELECT * FROM trabajadores ORDER BY nombre, apellidop");
 
 
 ?>
@@ -21,42 +37,38 @@
             <div class="row">
                <div class="col-md-6">
                   <!-- Folio Cuestionario -->
-                  <div class="form-group row">
-                     <label for="folioCuestionario" class="col-sm-2 col-form-label">Folio:</label>
-                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="folioCuestionario" id="folioCuestionario" required>
-                     </div>
+                  <div class="form-group">
+                     <label for="folioCuestionario">Folio:</label>
+                     <input type="text" class="form-control" name="folioCuestionario" id="folioCuestionario" required>
                   </div>
                </div>
                <div class="col-md-6">
                   <!-- Fecha de aplicacion del cuestionario -->
-                  <div class="form-group row">
-                     <label for="fechaAplicacion" class="col-sm-2 col-form-label">Fecha:</label>
-                     <div class="col-sm-10">
-                        <input type="date" class="form-control" name="fechaAplicacion" id="fechaAplicacion" required>
-                     </div>
+                  <div class="form-group">
+                     <label for="fechaAplicacion">Fecha:</label>
+                     <input type="date" class="form-control" name="fechaAplicacion" id="fechaAplicacion" required>
                   </div>
                </div>  
-            </div>
-            <div class="row">
+         
                <div class="col-md-6">
-                  <!-- Negocio al que pertenece el trabajador -->
-                  <div class="form-group row">
-                     <label for="negocio" class="col-sm-2 col-form-label">Negocio:</label>
-                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="negocio" id="negocio" required>
-                     </div>
+                  <div class="form-group">
+                     <!-- Select con los trabjadores -->
+                     <label for="trabajador">Trabajador:</label>
+                     <select class="form-control" id="trabajador" name="trabajador">
+                        <option>Selecciona un trabajador...</option>
+                        <?php
+                           
+                           while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
+                              $nombreCompleto = $row['nombre'] . " " . $row['apellidop'] . " " . $row['apellidom'];
+                              echo '<option >' . $nombreCompleto . '</option>';
+                           }
+
+                        ?>
+                           
+                     </select>
                   </div>
                </div>
-               <div class="col-md-6">
-                  <!-- Trabajador -->
-                  <div class="form-group row">
-                     <label for="trabajador" class="col-sm-2 col-form-label">Trabajador:</label>
-                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="trabajador" id="trabajador" required>
-                     </div>
-                  </div>
-               </div>  
+               
             </div>
 
          </fieldset>
