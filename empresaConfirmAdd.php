@@ -12,9 +12,9 @@
    if(!empty($_POST)) {
 
       //Validamos los valores delos campos
-      if(!empty($_POST['negocio'])) {$negocio = $_POST['negocio'];}
-      if(!empty($_POST['razonsocial'])) {$razonsocial = $_POST['razonsocial'];}
-      if(!empty($_POST['rfc'])) {$rfc = $_POST['rfc'];}
+      if(!empty($_POST['negocio'])) {$negocio = trim($_POST['negocio']);}
+      if(!empty($_POST['razonsocial'])) {$razonsocial = trim($_POST['razonsocial']);}
+      if(!empty($_POST['rfc'])) {$rfc = trim($_POST['rfc']);}
       
       // agregamos la nueva empresa
       $sql = "INSERT INTO negocios(negocio, razonsocial, rfc) VALUES(:negocio, :razonsocial, :rfc)";

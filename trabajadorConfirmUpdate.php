@@ -9,13 +9,13 @@
    $id = $_POST['id'];
 
    //Validamos los valores delos campos que recibimos del formulario
-   if(!empty($_POST['nombre'])) {$nombreNew = $_POST['nombre'];}
-   if(!empty($_POST['apellidop'])) {$apellidopNew = $_POST['apellidop'];}
-   if(!empty($_POST['apellidom'])) {$apellidomNew = $_POST['apellidom'];}
-   if(!empty($_POST['rfc'])) {$rfcNew = $_POST['rfc'];}
-   if(!empty($_POST['curp'])) {$curpNew = $_POST['curp'];} else {$curpNew = null;}
-   if(!empty($_POST['email'])) {$emailNew = $_POST['email'];} else {$emailNew = null;}
-   if(!empty($_POST['negocio'])) {$razonsocialNew = $_POST['negocio'];}
+   if(!empty($_POST['nombre'])) {$nombreNew = trim($_POST['nombre']);}
+   if(!empty($_POST['apellidop'])) {$apellidopNew = trim($_POST['apellidop']);}
+   if(!empty($_POST['apellidom'])) {$apellidomNew = trim($_POST['apellidom']);}
+   if(!empty($_POST['rfc'])) {$rfcNew = trim($_POST['rfc']);}
+   if(!empty($_POST['curp'])) {$curpNew = trim($_POST['curp']);} else {$curpNew = null;}
+   if(!empty($_POST['email'])) {$emailNew = trim($_POST['email']);} else {$emailNew = null;}
+   if(!empty($_POST['negocio'])) {$razonsocialNew = trim($_POST['negocio']);}
 
 
    // en base al negocio seleccionado obtenemos el ID

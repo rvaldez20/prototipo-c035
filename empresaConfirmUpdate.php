@@ -6,10 +6,10 @@
    // requerimos la conexión a la base de datos
    require "config.php";
 
-   $id = $_POST['id'];
-   $negocioNew = $_POST['negocio'];
-   $razonsocialNew = $_POST['razonsocial'];
-   $rfcNew = $_POST['rfc'];
+   $id = trim($_POST['id']);
+   $negocioNew = trim($_POST['negocio']);
+   $razonsocialNew = trim($_POST['razonsocial']);
+   $rfcNew = trim($_POST['rfc']);
 
    $sql = "UPDATE negocios SET negocio=:negocio, razonsocial=:razonsocial, rfc=:rfc WHERE id=:id";
    $query = $pdo->prepare($sql);

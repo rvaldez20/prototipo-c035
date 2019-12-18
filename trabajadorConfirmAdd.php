@@ -12,13 +12,13 @@
    if(!empty($_POST)) {
 
       //Validamos los valores delos campos
-      if(!empty($_POST['nombre'])) {$nombre = $_POST['nombre'];}
-      if(!empty($_POST['apellidop'])) {$apellidop = $_POST['apellidop'];}
-      if(!empty($_POST['apellidom'])) {$apellidom = $_POST['apellidom'];}
-      if(!empty($_POST['rfc'])) {$rfc = $_POST['rfc'];}
-      if(!empty($_POST['curp'])) {$curp = $_POST['curp'];} else {$curp = null;}
-      if(!empty($_POST['email'])) {$email = $_POST['email'];} else {$email = null;}
-      if(!empty($_POST['negocio'])) {$razonsocial = $_POST['negocio'];}
+      if(!empty($_POST['nombre'])) {$nombre = trim($_POST['nombre']);}
+      if(!empty($_POST['apellidop'])) {$apellidop = trim($_POST['apellidop']);}
+      if(!empty($_POST['apellidom'])) {$apellidom = trim($_POST['apellidom']);}
+      if(!empty($_POST['rfc'])) {$rfc = trim($_POST['rfc']);}
+      if(!empty($_POST['curp'])) {$curp = trim($_POST['curp']);} else {$curp = null;}
+      if(!empty($_POST['email'])) {$email = trim($_POST['email']);} else {$email = null;}
+      if(!empty($_POST['negocio'])) {$razonsocial = trim($_POST['negocio']);}
 
       // obtenesmo el id del negocio al que pertenece el trabajador
       $sqlNegocio = "SELECT id FROM negocios WHERE razonsocial=:razonsocial";
