@@ -1,9 +1,170 @@
 <?php
 
-   include_once 'config.php';
+   // include_once 'config.php';
    include_once 'header.php';
 
-   // Se guardan los datos de la fase I
+   // requerimos la conexión a la base de datos
+   require "config.php";
+
+
+   // ------------ Se procesan los resultados del cuestioanrio Fase I
+
+   // primero obtenemos los valores de los campos
+   if(!empty($_POST['folioCuestionario'])) {$folioCuestionario = trim($_POST['folioCuestionario']);}
+   if(!empty($_POST['nomtrabajador'])) {$nomtrabajador = trim($_POST['nomtrabajador']);}
+   // if(!empty($_POST['fechaAplicacion'])) {$fechaAplicacion = trim($_POST['fechaAplicacion']);}
+
+   
+
+   // array para guardar los valores de las respuestas del formulario
+   $respuestasArray = array();
+   $posNiveEstudio = 3;
+
+   if(!empty($_POST['sexo'])) {$sexo = $_POST['sexo'];}
+   array_push($respuestasArray, $sexo);
+   if(!empty($_POST['edad'])) {$edad = $_POST['edad'];}
+   array_push($respuestasArray, $edad);
+   if(!empty($_POST['edocivil'])) {$edocivil = $_POST['edocivil'];}
+   array_push($respuestasArray, $edocivil);
+   if(!empty($_POST['sininfo'])) {$sininfo = $_POST['sininfo'];} else {$sininfo = 0;}
+
+   // validamos si existe o no informaicón de nivel de estudios
+   if ($sininfo != 0){
+      array_push($respuestasArray, $sininfo);
+   } else {
+      array_push($respuestasArray, $sininfo);
+      if(!empty($_POST['primaria'])) {$primaria = $_POST['primaria'];} else {$primaria = 0;}
+      array_push($respuestasArray, $primaria);
+      if(!empty($_POST['secundaria'])) {$secundaria = $_POST['secundaria'];} else {$secundaria = 0;}
+      array_push($respuestasArray, $secundaria);
+      if(!empty($_POST['preparatoria'])) {$preparatoria = $_POST['preparatoria'];} else {$preparatoria = 0;}
+      array_push($respuestasArray, $preparatoria);
+      if(!empty($_POST['tecnico'])) {$tecnico = $_POST['tecnico'];} else {$tecnico = 0;}
+      array_push($respuestasArray, $tecnico);
+      if(!empty($_POST['licenciatura'])) {$licenciatura = $_POST['licenciatura'];} else {$licenciatura = 0;}
+      array_push($respuestasArray, $licenciatura);
+      if(!empty($_POST['maestria'])) {$maestria = $_POST['maestria'];} else {$maestria = 0;}
+      array_push($respuestasArray, $maestria);
+      if(!empty($_POST['doctorado'])) {$doctorado = $_POST['doctorado'];} else {$doctorado = 0;}
+      array_push($respuestasArray, $doctorado);
+   }
+
+   if(!empty($_POST['puesto'])) {$puesto = $_POST['puesto'];}
+   array_push($respuestasArray, $puesto);
+   if(!empty($_POST['area'])) {$area = $_POST['area'];}
+   array_push($respuestasArray, $area);
+   if(!empty($_POST['tipopuesto'])) {$tipopuesto = $_POST['tipopuesto'];}
+   array_push($respuestasArray, $tipopuesto);
+   if(!empty($_POST['tipocontratacion'])) {$tipocontratacion = $_POST['tipocontratacion'];}
+   array_push($respuestasArray, $tipocontratacion);
+   if(!empty($_POST['tipopersonal'])) {$tipopersonal = $_POST['tipopersonal'];}
+   array_push($respuestasArray, $tipopersonal);
+   if(!empty($_POST['tipojornadatrabajo'])) {$tipojornadatrabajo = $_POST['tipojornadatrabajo'];}
+   array_push($respuestasArray, $tipojornadatrabajo);
+   if(!empty($_POST['rotacionturnos'])) {$rotacionturnos = $_POST['rotacionturnos'];}
+   array_push($respuestasArray, $rotacionturnos);
+   if(!empty($_POST['experienciayears'])) {$experienciayears = $_POST['experienciayears'];}
+   array_push($respuestasArray, $experienciayears);
+   if(!empty($_POST['tiempopuestoactual'])) {$tiempopuestoactual = $_POST['tiempopuestoactual'];}
+   array_push($respuestasArray, $tiempopuestoactual);
+   if(!empty($_POST['tiempoexperiencia'])) {$tiempoexperiencia = $_POST['tiempoexperiencia'];}
+   array_push($respuestasArray, $tiempoexperiencia);
+
+
+   
+
+   // -------------------- INSERT TABLE: cuestionario
+
+   //Primero obtenemos el id del trabjador seleccionado en base al nombre concatenado
+   $sqlTrabajador = "SELECT id FROM trabajadores WHERE concat(nombre, ' ', apellidop, ' ', apellidom)=:nomtrabajador";
+   $queryTrabajador = $pdo->prepare($sqlTrabajador);
+   $queryTrabajador->execute([
+      'nomtrabajador' => $nomtrabajador
+   ]);
+   // obtenemos la columna con el id especificado
+   $rowTrabajador = $queryTrabajador->fetch(PDO::FETCH_ASSOC);
+   // Guardamos el id del negocio seleccionado en una variable
+   $trabajadorId = $rowTrabajador['id'];
+
+   // echo '----';
+   // echo '<br>';
+   // echo $folioCuestionario;
+   // echo '<br>';
+   // echo $trabajadorId;
+   // echo '<br>';
+   // echo '----';
+  
+   
+   // Se obtiene la fecha y hora en que se aplica el cuestionario
+   $fechafull = date('Y-m-d H:i:s');
+   $fechaModificada = strtotime ( '-6 hour' , strtotime ( $fechafull ) );
+   $fechaHora = date('Y-m-d H:i:s', $fechaModificada);
+   //echo $fechahora;
+
+   $fase1Ok = 1;
+   
+
+   // Se procede a guardar la información en cuestionarios
+   $sqlCuestionario = "INSERT INTO cuestionario(folioCuestionario, trabajadorId, fase1, fechafase1) VALUES(:folioCuestionario, :trabajadorId, :fase1, :fechafase1)";
+   $queryCuestionario = $pdo->prepare($sqlCuestionario);
+
+   $queryCuestionario->execute([      
+      'folioCuestionario' => $folioCuestionario,
+      'trabajadorId' => $trabajadorId,
+      'fase1' => $fase1Ok,
+      'fechafase1' => $fechaHora
+   ]);
+
+   // Ahora obtenemos el id del cuestionario que acabamos de insertar
+   $sqlIdCuestionario = "SELECT id FROM cuestionario ORDER BY id DESC LIMIT 1";
+   $queryIdCuestionario = $pdo->prepare($sqlIdCuestionario);
+   $queryIdCuestionario->execute();
+   // obtenemos la columna con el id especificado
+   $rowIdCuestionario = $queryIdCuestionario->fetch(PDO::FETCH_ASSOC);
+   // Guardamos el id del negocio seleccionado en una variable
+   $idCuestionario = $rowIdCuestionario['id'];
+
+   echo '----';
+   echo '<br>';
+   echo $idCuestionario;
+   echo '<br>';
+
+   // -------------------- ***************************
+
+   
+
+   // var_dump($respuestasArray);
+
+
+
+   // echo "Folio Cuestionario: " . $folioCuestionario . "<br>";
+   // echo "Nombre Trabjador: " . $nomtrabajador . "<br>";
+   // echo "Fecha/Hora Aplicacion: " . $fechaAplicacion . "<br>";
+
+   // echo "Sexo: " . $sexo . "<br>";
+   // echo "Edad: " . $edad . "<br>";
+   // echo "Estado Civil: " . $edocivil . "<br>";
+   // echo "Sin Información: " . $sininfo . "<br>";
+   // echo "Primaria: " . $primaria . "<br>";
+   // echo "Secundaria: " . $secundaria . "<br>";
+   // echo "Preparatoria: " . $preparatoria . "<br>";
+   // echo "Técnico: " . $tecnico . "<br>";
+   // echo "Licenciatura: " . $licenciatura . "<br>";
+   // echo "Maestria: " . $maestria . "<br>";
+   // echo "Doctorado: " . $doctorado . "<br>";
+
+   // echo "Puesto: " . $puesto . "<br>";
+   // echo "Area: " . $area . "<br>";
+   // echo "Tipo Puesto: " . $tipopuesto . "<br>";
+   // echo "Tipo Contratacion: " . $tipocontratacion . "<br>";
+   // echo "Tipo Personal: " . $tipopersonal . "<br>";
+   // echo "Tipo Jornada de Trabajo: " . $tipojornadatrabajo . "<br>";
+   // echo "Rotación de Turnos: " . $rotacionturnos . "<br>";
+   // echo "Experiencia en Años: " . $experienciayears . "<br>";
+   // echo "Tiempo en el puesto Actual: " . $tiempopuestoactual . "<br>";
+   // echo "Tiempo Experiencia Laboral: " . $tiempoexperiencia . "<br>";
+
+
 
 ?>
 

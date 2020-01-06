@@ -5,18 +5,13 @@
 
    // requerimos la conexión a la base de datos
    require "config.php";
+   
+   $hora = date('Y-m-d H:i:s');
+   $fechaMenosMinutos = strtotime ( '-6 hour' , strtotime ( $hora ) );
+   $fechaHora = date('Y-m-d H:i:s', $fechaMenosMinutos);
+   echo $fechaHora;
 
-   // $hoy = getdate();
-   // echo date("F j, Y, g:i a");    
-   // echo "<br>";
-   // var_dump($hoy);
-
-   // $dateTime = new DateTime();
-   // $dateTime->setTimeZone(new DateTimeZone('Mexico/BajaNorte'));
-   // return $dateTime->format('T');
-   // echo $dateTime;
-
-   // obtenemos el catalogo de trabajadores
+   // obtenemos el catalogo de trabajadores para despues cargarlo en el select
    $queryResult = $pdo->query("SELECT * FROM trabajadores ORDER BY nombre, apellidop");
 
 
@@ -29,7 +24,7 @@
          <h2>Fase I. Información del trabajador</h2>
       </div>
       
-      <form action="cfase2.php" method="GET">
+      <form action="cfase2.php" method="POST">
 
          <!-- Datos de la persona a la que se le aplica el formulario -->
          <fieldset class="form-group">
@@ -43,18 +38,10 @@
                   </div>
                </div>
                <div class="col-md-6">
-                  <!-- Fecha de aplicacion del cuestionario -->
-                  <div class="form-group">
-                     <label for="fechaAplicacion">Fecha:</label>
-                     <input type="date" class="form-control" name="fechaAplicacion" id="fechaAplicacion" required>
-                  </div>
-               </div>  
-         
-               <div class="col-md-6">
                   <div class="form-group">
                      <!-- Select con los trabjadores -->
-                     <label for="trabajador">Trabajador:</label>
-                     <select class="form-control" id="trabajador" name="trabajador">
+                     <label for="nomtrabajador">Trabajador:</label>
+                     <select class="form-control" id="nomtrabajador" name="nomtrabajador">
                         <option>Selecciona un trabajador...</option>
                         <?php
                            
@@ -67,6 +54,8 @@
                            
                      </select>
                   </div>
+                  <!-- Input oculto para mandar la fecha por POST -->
+                  <input type="hidden" name="fechaAplicacion" value="<?php echo $fechaActual ?>">
                </div>
                
             </div>
