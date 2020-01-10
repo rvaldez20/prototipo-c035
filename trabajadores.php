@@ -7,7 +7,7 @@
    require "config.php";
 
    // hacemos una consulta para traer los datos de la DB
-   $queryResult = $pdo->query("SELECT trabajadores.id, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, trabajadores.rfc, trabajadores.curp, trabajadores.email, negocios.razonsocial FROM trabajadores, negocios WHERE trabajadores.negocioId=negocios.id");
+   $queryResult = $pdo->query("SELECT trabajadores.id, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, trabajadores.rfc, trabajadores.curp, trabajadores.email, negocios.razonsocial FROM trabajadores, negocios WHERE trabajadores.negocioId=negocios.id ORDER BY trabajadores.negocioId,  trabajadores.nombre");
 
    // hacemos una consulta para traer los datos de la DB
    //$queryResult = $pdo->query("SELECT * FROM trabajadores");
