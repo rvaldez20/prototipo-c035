@@ -30,7 +30,15 @@
 
    // validamos si existe o no informaicón de nivel de estudios
    if ($sininfo != 0){
-      array_push($respuestasArray, $sininfo);
+      array_push($respuestasArray, 20);
+      array_push($respuestasArray, 0);
+      array_push($respuestasArray, 0);
+      array_push($respuestasArray, 0);
+      array_push($respuestasArray, 0);
+      array_push($respuestasArray, 0);
+      array_push($respuestasArray, 0);
+      array_push($respuestasArray, 0);
+
    } else {
       array_push($respuestasArray, $sininfo);
       if(!empty($_POST['primaria'])) {$primaria = $_POST['primaria'];} else {$primaria = 0;}
@@ -50,9 +58,9 @@
    }
 
    if(!empty($_POST['puesto'])) {$puesto = $_POST['puesto'];}
-   array_push($respuestasArray, $puesto);
+   array_push($respuestasArray, -1);
    if(!empty($_POST['area'])) {$area = $_POST['area'];}
-   array_push($respuestasArray, $area);
+   array_push($respuestasArray, -1);
    if(!empty($_POST['tipopuesto'])) {$tipopuesto = $_POST['tipopuesto'];}
    array_push($respuestasArray, $tipopuesto);
    if(!empty($_POST['tipocontratacion'])) {$tipocontratacion = $_POST['tipocontratacion'];}
@@ -64,7 +72,7 @@
    if(!empty($_POST['rotacionturnos'])) {$rotacionturnos = $_POST['rotacionturnos'];}
    array_push($respuestasArray, $rotacionturnos);
    if(!empty($_POST['experienciayears'])) {$experienciayears = $_POST['experienciayears'];}
-   array_push($respuestasArray, $experienciayears);
+   array_push($respuestasArray, -1);
    if(!empty($_POST['tiempopuestoactual'])) {$tiempopuestoactual = $_POST['tiempopuestoactual'];}
    array_push($respuestasArray, $tiempopuestoactual);
    if(!empty($_POST['tiempoexperiencia'])) {$tiempoexperiencia = $_POST['tiempoexperiencia'];}
@@ -124,10 +132,47 @@
    // Guardamos el id del negocio seleccionado en una variable
    $idCuestionario = $rowIdCuestionario['id'];
 
-   echo '----';
-   echo '<br>';
-   echo $idCuestionario;
-   echo '<br>';
+   // obtenemos el numero de respuestas
+   $numRespuestas = count($respuestasArray);
+   
+
+   // echo '----';
+   // echo '<br>';
+   // echo $idCuestionario;
+   // echo '<br>';
+   // echo $numRespuestas;
+   // echo '<br>';
+   // echo '----';
+
+   // var_dump($respuestasArray);
+   $idPreguntaInicial = 1;
+
+   // ahora gusardamos las respuestas de la fase1 del cuestionario
+   $sqlCuestionarioDetalle = "INSERT INTO cuestionariosdetalle(cuestionarioId, preguntaId, respuestaId) VALUES(:cuestionarioId, :preguntaId, :respuestaId)";
+   $queryCuestionarioDetalle = $pdo->prepare($sqlCuestionarioDetalle);
+
+   for ($i = 0; $i < $numRespuestas; $i++) {
+
+      if($i>=3 && $i<10){
+         $queryCuestionarioDetalle->execute([      
+            'cuestionarioId' => $idCuestionario,
+            'preguntaId' => 4,
+            'respuestaId' => $respuestasArray[$i],
+         ]);      
+      } else {
+
+         $queryCuestionarioDetalle->execute([      
+            'cuestionarioId' => $idCuestionario,
+            'preguntaId' => $idPreguntaInicial,
+            'respuestaId' => $respuestasArray[$i]         
+         ]);
+
+         $idPreguntaInicial++;
+      }
+
+            
+   }
+
 
    // -------------------- ***************************
 
