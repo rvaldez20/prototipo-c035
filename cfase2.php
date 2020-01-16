@@ -18,6 +18,7 @@
 
    // array para guardar los valores de las respuestas del formulario
    $respuestasArray = array();
+   $respuestasAbiertasArray = array();
    $posNiveEstudio = 3;
 
    if(!empty($_POST['sexo'])) {$sexo = $_POST['sexo'];}
@@ -57,10 +58,12 @@
       array_push($respuestasArray, $doctorado);
    }
 
-   if(!empty($_POST['puesto'])) {$puesto = $_POST['puesto'];}
+   if(!empty($_POST['puesto'])) {$puesto = trim($_POST['puesto']);}
    array_push($respuestasArray, -1);
-   if(!empty($_POST['area'])) {$area = $_POST['area'];}
+   array_push($respuestasAbiertasArray, $puesto);
+   if(!empty($_POST['area'])) {$area = trim($_POST['area']);}
    array_push($respuestasArray, -1);
+   array_push($respuestasAbiertasArray, $area);
    if(!empty($_POST['tipopuesto'])) {$tipopuesto = $_POST['tipopuesto'];}
    array_push($respuestasArray, $tipopuesto);
    if(!empty($_POST['tipocontratacion'])) {$tipocontratacion = $_POST['tipocontratacion'];}
@@ -73,13 +76,13 @@
    array_push($respuestasArray, $rotacionturnos);
    if(!empty($_POST['experienciayears'])) {$experienciayears = $_POST['experienciayears'];}
    array_push($respuestasArray, -1);
+   array_push($respuestasAbiertasArray, $experienciayears);
    if(!empty($_POST['tiempopuestoactual'])) {$tiempopuestoactual = $_POST['tiempopuestoactual'];}
    array_push($respuestasArray, $tiempopuestoactual);
    if(!empty($_POST['tiempoexperiencia'])) {$tiempoexperiencia = $_POST['tiempoexperiencia'];}
    array_push($respuestasArray, $tiempoexperiencia);
 
 
-   
 
    // -------------------- INSERT TABLE: cuestionario
 
@@ -147,8 +150,8 @@
    // var_dump($respuestasArray);
    $idPreguntaInicial = 1;
 
-   // ahora gusardamos las respuestas de la fase1 del cuestionario
-   $sqlCuestionarioDetalle = "INSERT INTO cuestionariosdetalle(cuestionarioId, preguntaId, respuestaId) VALUES(:cuestionarioId, :preguntaId, :respuestaId)";
+   // ahora gusardamos las respuestas de la fase1 del cuestionariodetalle
+   $sqlCuestionarioDetalle = "INSERT INTO cuestionariosdetalle(cuestionarioId, preguntaId, respuestaId, fase) VALUES(:cuestionarioId, :preguntaId, :respuestaId, :fase)";
    $queryCuestionarioDetalle = $pdo->prepare($sqlCuestionarioDetalle);
 
    for ($i = 0; $i < $numRespuestas; $i++) {
@@ -158,21 +161,46 @@
             'cuestionarioId' => $idCuestionario,
             'preguntaId' => 4,
             'respuestaId' => $respuestasArray[$i],
+            'fase' => 1
          ]);      
       } else {
-
          $queryCuestionarioDetalle->execute([      
             'cuestionarioId' => $idCuestionario,
             'preguntaId' => $idPreguntaInicial,
-            'respuestaId' => $respuestasArray[$i]         
+            'respuestaId' => $respuestasArray[$i],
+            'fase' => 1       
          ]);
 
          $idPreguntaInicial++;
-      }
-
-            
+      }            
    }
 
+   // ahora gusardamos las respuestas de la fase1 del cuestionariodetallera (respuestas abiertas)
+   // son las preguntas 5, 6 y 12
+   $sqlCuestionarioDetallera = "INSERT INTO cuestionariosdetallera(cuestionarioId, preguntaId, respuestaabierta) VALUES(:cuestionarioId, :preguntaId, :respuestaabierta)";
+   $queryCuestionarioDetallera = $pdo->prepare($sqlCuestionarioDetallera);
+
+   $x = 0; 
+   for ($i = 0; $i < 3 ; $i++) {
+           
+      switch ($i) {
+         case 0:
+            $x = 5;
+            break;
+         case 1:
+            $x = 6;
+            break;
+         case 2:
+            $x = 12;
+            break;
+      }
+
+      $queryCuestionarioDetallera->execute([      
+         'cuestionarioId' => $idCuestionario,
+         'preguntaId' => $x,
+         'respuestaabierta' => $respuestasAbiertasArray[$i],
+      ]);   
+   }
 
    // -------------------- ***************************
 
