@@ -6,13 +6,82 @@
    // requerimos la conexión a la base de datos
    require "config.php";
 
+   $idCuestionario = $_GET['id'];
+
+   // var_dump($idCuestionario);
+
    // hacemos una consulta para traer los datos de la DB
-   $queryResult = $pdo->query("SELECT trabajadores.id, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, trabajadores.rfc, trabajadores.curp, trabajadores.email, negocios.razonsocial FROM trabajadores, negocios WHERE trabajadores.negocioId=negocios.id ORDER BY trabajadores.negocioId,  trabajadores.nombre");
+   $sqlCuestionario ="SELECT cuestionario.id, cuestionario.trabajadorId, cuestionario.folioCuestionario, cuestionario.fase1, cuestionario.fase2, cuestionario.fase3, cuestionario.fase4, cuestionario.fechafase1, cuestionario.fechafase2, cuestionario.fechafase3, cuestionario.fechafase4, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom FROM cuestionario, trabajadores WHERE cuestionario.trabajadorId = trabajadores.id AND cuestionario.id =:idCuestionario";
+
+   $queryCuestionario = $pdo->prepare($sqlCuestionario);
+   $queryCuestionario->execute([
+      'idCuestionario' => $idCuestionario
+   ]);
+   // obtenemos la columna con el id especificado
+   $rowCuestionario = $queryCuestionario->fetch(PDO::FETCH_ASSOC);
+
+   // guardamoslos datos en variables
+   $trabajadorId = $rowCuestionario['trabajadorId'];
+   $folioCuestionario = $rowCuestionario['folioCuestionario'];
+   $fase1 = $rowCuestionario['fase1'];
+   $fase2 = $rowCuestionario['fase2'];
+   $fase3 = $rowCuestionario['fase3'];
+   $fase4 = $rowCuestionario['fase4'];
+   $fechafase1 = $rowCuestionario['fechafase1'];
+   $fechafase2 = $rowCuestionario['fechafase2'];
+   $fechafase3 = $rowCuestionario['fechafase3'];
+   $fechafase4 = $rowCuestionario['fechafase4'];
+   $trabajador = $rowCuestionario['nombre'] . ' ' . $rowCuestionario['apellidop'] . ' ' . $rowCuestionario['apellidom'];
+
+   // var_dump($fase4);
+
+   // hacemos una consulta para traer las preguntas y respuestas de la fase 1
+   $sqlpreguntasrespuestas ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador";
+
+   $querypreguntasrespuestas = $pdo->prepare($sqlpreguntasrespuestas);
+   $querypreguntasrespuestas->execute([
+      'idTrabajador' => $trabajadorId
+   ]);
+
+   
+   // hacemos una consulta para traer los registros de las preguntas abiertas
+   $sqlpreguntasabiertas ="SELECT cuestionarioId, preguntaId, respuestaabierta FROM cuestionariosdetallera WHERE cuestionarioId =:idCuestionario";
+
+   $querypreguntasabiertas = $pdo->prepare($sqlpreguntasabiertas);
+   $querypreguntasabiertas->execute([
+      'idCuestionario' => $idCuestionario
+   ]);
+
+   $indexpregunta = 0;
+   while($row = $querypreguntasabiertas->fetch(PDO::FETCH_ASSOC)) {
+      if($indexpregunta == 0) {         
+         $respuestaAbierta5 = $row['respuestaabierta'];
+      }
+      
+      if($indexpregunta == 1) {
+         $respuestaAbierta6 = $row['respuestaabierta'];
+      }
+
+      if($indexpregunta == 2) {
+         $respuestaAbierta12 = $row['respuestaabierta'];
+      }
+      $indexpregunta++;
+   }
+
+   // echo $pregunta5 . '---' . $respuestaAbierta5;
+   // echo '<br><br>';
+   // echo $pregunta6 . '---' . $respuestaAbierta6;
+   // echo '<br><br>';
+   //echo $respuestaAbierta12;
+
+   // obtenemos la columna con el id especificado
+   // $rowpreguntasrespuestas = $querypreguntasrespuestas->fetch(PDO::FETCH_ASSOC);
+   // var_dump($rowpreguntasrespuestas);
 
    // hacemos una consulta para traer los datos de la DB
    //$queryResult = $pdo->query("SELECT * FROM trabajadores");
 
-   // while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
+   // while($row = $querypreguntasabiertas->fetch(PDO::FETCH_ASSOC)) {
    //    var_dump($row);
    //    echo "<br><br>";
    // }
@@ -44,20 +113,65 @@
                </thead>
                <tbody>
                   <tr>
-                     <th class="text-center" scope="row">1</th>
-                     <td>DESPACHO-BRENDA-001</td>
-                     <td>Aurora lopez Solis</td>
-                     <td class="text-center"><span class="badge badge-success">Aplicado</span></td>
-                     <td class="text-center"><span class="badge badge-warning">Pendiente</span></td>
-                     <td class="text-center"><span class="badge badge-warning">Pendiente</span></td>
-                     <td class="text-center"><span class="badge badge-warning">Pendiente</span></td>                    
+                     <th class="text-center" scope="row"> <?php echo $idCuestionario ?> </th>
+                     <td> <?php echo $folioCuestionario ?> </td>
+                     <td> <?php echo $trabajador ?> </td>
+                     <?php
+                        if($fase1 == 1) {
+                           echo '<td class="text-center"><span class="badge badge-success">Aplicado</span></td>';                                                      
+                        } else {
+                           echo '<td class="text-center"><span class="badge badge-warning">Pendiente</span></td>';
+                        }
+
+                        if($fase2 == 1) {
+                           echo '<td class="text-center"><span class="badge badge-success">Aplicado</span></td>';                                                      
+                        } else {
+                           echo '<td class="text-center"><span class="badge badge-warning">Pendiente</span></td>';
+                        }
+
+                        if($fase3 == 1) {
+                           echo '<td class="text-center"><span class="badge badge-success">Aplicado</span></td>';                                                      
+                        } else {
+                           echo '<td class="text-center"><span class="badge badge-warning">Pendiente</span></td>';
+                        }
+
+                        if($fase4 == 1) {
+                           echo '<td class="text-center"><span class="badge badge-success">Aplicado</span></td>';                                                      
+                        } else {
+                           echo '<td class="text-center"><span class="badge badge-warning">Pendiente</span></td>';
+                        }
+                     ?>                     
+                     
+                                        
                   </tr>                 
                   <tr>                                                              
                      <td colspan="3"></td>
-                     <td class="text-center"><span class="badge badge-primary">2020-01-13 15:35:58</span></td>
-                     <td class="text-center">NA</td>
-                     <td class="text-center">NA</td>
-                     <td class="text-center">NA</td>                                         
+                     <?php 
+                        if($fase1 == 1){
+                           echo '<td class="text-center"><span class="badge badge-primary">'. $fechafase1 .'</span></td>';
+                        }else {
+                           echo '<td class="text-center">-</td>';
+                        }
+
+                        if($fase2 == 1){
+                           echo '<td class="text-center"><span class="badge badge-primary">'. $fechafase2 .'</span></td>';
+                        }else {
+                           echo '<td class="text-center">-</td>';
+                        }
+                        
+                        if($fase3 == 1){
+                           echo '<td class="text-center"><span class="badge badge-primary">'. $fechafase3 .'</span></td>';
+                        }else {
+                           echo '<td class="text-center">-</td>';
+                        }
+
+                        if($fase4 == 1){
+                           echo '<td class="text-center"><span class="badge badge-primary">'. $fechafase4 .'</span></td>';
+                        }else {
+                           echo '<td class="text-center">-</td>';
+                        }
+                     ?>     
+
                   </tr>                 
                </tbody>
             </table>   
@@ -73,38 +187,112 @@
       <div class="row">
          <div class="col-md-12">
 
-         <table class="table">
-            <thead class="thead-dark">
-               <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido Paterno</th>
-                  <th scope="col">Apellido Materno</th>
-                  <th scope="col">email</th>
-                  <th scope="col">Negocio</th>
-                  <th scope="col"></th>
-               </tr>
-            </thead>
-            <tbody>
-               
-               <?php 
-                  // while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
-                  //    echo '<tr>';
-                  //    echo '<th scope="row">' . $row['id'] . '</th>';
-                  //    echo '<td>' . $row['nombre'] . '</td>';
-                  //    echo '<td>' . $row['apellidop'] . '</td>';
-                  //    echo '<td>' . $row['apellidom'] . '</td>';
-                  //    echo '<td>' . $row['email'] . '</td>';
-                  //    echo '<td>' . $row['razonsocial'] . '</td>';
-                  //    echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
-                  //    // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
-                  //    echo '</tr>';
-                  //}
-               ?>
-                             
-            </tbody>
-         </table>
+            <table class="table">
+               <thead class="thead-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Pregunta</th>
+                     <th scope="col">Respuesta</th>                  
+                     <th scope="col"></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  
+                  <?php
+                     $contadorPreguntas = 0; 
+                     while($row = $querypreguntasrespuestas->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<th scope="row">' . $row['id'] . '</th>';
+                        echo '<td>' . $row['pregunta'] . '</td>';
+                        echo '<td>' . $row['respuesta'] . '</td>'; 
+                        echo '<td>-</td>';
+                        // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                        // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                        echo '</tr>';     
+                        
+                        if($contadorPreguntas == 3){
+                           if($row['respuesta'] == 'Sin formación'){
+                              echo '<tr>';
+                              echo '<th scope="row">' . '5' . '</th>';
+                              echo '<td>' . 'Profesión/Puesto' . '</td>';
+                              echo '<td>' . $respuestaAbierta5 . '</td>'; 
+                              echo '<td>-</td>';
+                              // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                              // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                              echo '</tr>';
 
+                              echo '<tr>';
+                              echo '<th scope="row">' . '6' . '</th>';
+                              echo '<td>' . 'Departamento/Area' . '</td>';
+                              echo '<td>' . $respuestaAbierta6 . '</td>'; 
+                              echo '<td>-</td>';
+                              // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                              // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                              echo '</tr>';
+                           }
+                        } 
+
+                        if($contadorPreguntas == 9){
+                           if($row['pregunta'] == 'Nivel de estudios'){
+                              echo '<tr>';
+                              echo '<th scope="row">' . '5' . '</th>';
+                              echo '<td>' . 'Profesión/Puesto' . '</td>';
+                              echo '<td>' . $respuestaAbierta5 . '</td>'; 
+                              echo '<td>-</td>';
+                              // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                              // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                              echo '</tr>';
+
+                              echo '<tr>';
+                              echo '<th scope="row">' . '6' . '</th>';
+                              echo '<td>' . 'Departamento/Area' . '</td>';
+                              echo '<td>' . $respuestaAbierta6 . '</td>'; 
+                              echo '<td>-</td>';
+                              // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                              // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                              echo '</tr>';
+                           }
+                        }
+
+                        if($contadorPreguntas == 8){
+                           if($row['pregunta'] == 'Realiza rotación de turnos'){
+                              echo '<tr>';
+                              echo '<th scope="row">' . '12' . '</th>';
+                              echo '<td>' . 'Experiencia(años)' . '</td>';
+                              echo '<td>' . $respuestaAbierta12 . '</td>'; 
+                              echo '<td>-</td>';
+                              // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                              // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                              echo '</tr>';                              
+                           }
+                        } 
+
+                        if($contadorPreguntas == 14){
+                           if($row['pregunta'] == 'Realiza rotación de turnos'){
+                              echo '<tr>';
+                              echo '<th scope="row">' . '12' . '</th>';
+                              echo '<td>' . 'Experiencia(años)' . '</td>';
+                              echo '<td>' . $respuestaAbierta12 . '</td>'; 
+                              echo '<td>-</td>';
+                              // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                              // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                              echo '</tr>';                              
+                           }
+                        } 
+
+                        // echo $pregunta5 . '---' . $respuestaAbierta5;
+                        $contadorPreguntas++;
+                     }
+                  ?>
+                              
+               </tbody>
+            </table>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-md-12">
+            <h2 class="mt-3 text-center">Preguntas / Respuestas Fase II</h2>
          </div>
       </div>
      

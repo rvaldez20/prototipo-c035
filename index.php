@@ -78,7 +78,7 @@
                         
                         
                         
-                        echo '<td><a href="consultarCuestionario.php?id='. $row['id'] .'" class="badge badge-success">Ver</a></td>';
+                        echo '<td><a href="consultarCuestionario.php?id='. $row['id'] .'" class="badge badge-primary">Ver Respuestas</a></td>';
                         // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
                         echo '</tr>';
                      }
