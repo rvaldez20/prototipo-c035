@@ -12,9 +12,8 @@
    echo $fechaHora;
 
    // obtenemos el catalogo de trabajadores para despues cargarlo en el select
-   $queryResult = $pdo->query("SELECT * FROM trabajadores ORDER BY nombre, apellidop");
-
-
+   $queryResult = $pdo->query("SELECT trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, negocios.razonsocial FROM negocios, trabajadores WHERE trabajadores.negocioId=negocios.id AND trabajadores.fase1=0 ORDER BY negocios.negocio, trabajadores.nombre, trabajadores.apellidop");
+   
 ?>
 
    <!-- cuerpo body -->
@@ -24,30 +23,30 @@
          <h2>Fase I. Información del trabajador</h2>
       </div>
       
-      <form action="cfase2.php" method="POST">
+      <form action="cfase1ProcesarRespuestas.php" method="POST">
 
          <!-- Datos de la persona a la que se le aplica el formulario -->
          <fieldset class="form-group">
          
             <div class="row">
-               <div class="col-md-6">
+               <div class="col-md-3">
                   <!-- Folio Cuestionario -->
                   <div class="form-group">
                      <label for="folioCuestionario">Folio:</label>
-                     <input type="text" class="form-control" name="folioCuestionario" id="folioCuestionario" required>
+                     <input type="text" class="form-control" name="folioCuestionario" id="folioCuestionario" placeholder="Ingrese un folio" required>
                   </div>
                </div>
-               <div class="col-md-6">
+               <div class="col-md-9">
                   <div class="form-group">
                      <!-- Select con los trabjadores -->
-                     <label for="nomtrabajador">Trabajador:</label>
+                     <label for="nomtrabajador">Selecciona un trabajador:</label>
                      <select class="form-control" id="nomtrabajador" name="nomtrabajador">
                         <option>Selecciona un trabajador...</option>
                         <?php
                            
                            while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
                               $nombreCompleto = $row['nombre'] . " " . $row['apellidop'] . " " . $row['apellidom'];
-                              echo '<option >' . $nombreCompleto . '</option>';
+                              echo '<option >' . $nombreCompleto . ' (' . $row['razonsocial'] . ')' . '</option>';
                            }
 
                         ?>
@@ -220,49 +219,41 @@
                <legend class="col-form-label col-sm-3 pt-0 col-form-label-lg">Nivel de Estudios:</legend>
                <div class="col-sm-3">
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Sin Información
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Primaria
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Secundaria
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Preparatoria o Bachillerato
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Técnico Superior
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Licenciatura
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Maestría
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- <input class="form-check-input" type="radio" name="nivelest" id="15" value="15"> -->
                      <label class="form-check-label">
                         Doctorado
                      </label>
@@ -277,49 +268,49 @@
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- primaria -->
+                     <!-- primaria  terminada -->
                      <input class="custom-control-input" type="radio" name="primaria" id="21" value="21">
                      <label class="custom-control-label" for="21">
                         Terminada
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- secundaria -->
+                     <!-- secundaria terminada -->
                      <input class="custom-control-input" type="radio" name="secundaria" id="23" value="23">
                      <label class="custom-control-label" for="23">
                         Terminada
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- preparatoria -->
+                     <!-- preparatoria terminada -->
                      <input class="custom-control-input" type="radio" name="preparatoria" id="25" value="25">
                      <label class="custom-control-label" for="25">
                         Terminada
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- tecnico -->
+                     <!-- tecnico terrminada-->
                      <input class="custom-control-input" type="radio" name="tecnico" id="27" value="27">
                      <label class="custom-control-label" for="27">
                         Terminada
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- licenciatura -->
+                     <!-- licenciatura terminada -->
                      <input class="custom-control-input" type="radio" name="licenciatura" id="29" value="29">
                      <label class="custom-control-label" for="29">
                         Terminada
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- maestria -->
+                     <!-- maestria terminada -->
                      <input class="custom-control-input" type="radio" name="maestria" id="31" value="31">
                      <label class="custom-control-label" for="31">
                         Terminada
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- doctorado -->
+                     <!-- doctorado terminada -->
                      <input class="custom-control-input" type="radio" name="doctorado" id="33" value="33">
                      <label class="custom-control-label" for="33">
                         Terminada
@@ -329,55 +320,54 @@
                <div class="col-sm-3">
                   <div class="custom-control custom-radio">
                      <!-- sin inromacion -->
-                     <!-- <input class="form-check-input" type="radio" name="edocivil" id="18" value="18"> -->
                      <label class="form-check-label" for="18">
-
+                     
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- primaria -->
+                     <!-- primaria incompleta -->
                      <input class="custom-control-input" type="radio" name="primaria" id="22" value="22">
                      <label class="custom-control-label" for="22">
                         Incompleta
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- secundaria -->
+                     <!-- secundaria incompleta-->
                      <input class="custom-control-input" type="radio" name="secundaria" id="24" value="24">
                      <label class="custom-control-label" for="24">
                         Incompleta
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- preparatoria -->
+                     <!-- preparatoria incompleta -->
                      <input class="custom-control-input" type="radio" name="preparatoria" id="26" value="26">
                      <label class="custom-control-label" for="26">
                         Incompleta
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- tecnico -->
+                     <!-- tecnico incompleto-->
                      <input class="custom-control-input" type="radio" name="tecnico" id="28" value="28">
                      <label class="custom-control-label" for="28">
                         Incompleta
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- licenciatura -->
+                     <!-- licenciatura incompleta-->
                      <input class="custom-control-input" type="radio" name="licenciatura" id="30" value="30">
                      <label class="custom-control-label" for="30">
                         Incompleta
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- maestria -->
+                     <!-- maestria incompleta-->
                      <input class="custom-control-input" type="radio" name="maestria" id="32" value="32">
                      <label class="custom-control-label" for="32">
                         Incompleta
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
-                     <!-- doctorado -->
+                     <!-- doctorado incompleto-->
                      <input class="custom-control-input" type="radio" name="doctorado" id="34" value="34">
                      <label class="custom-control-label" for="34">
                         Incompleta
@@ -515,7 +505,7 @@
                   <div class="custom-control custom-radio">
                      <input class="custom-control-input" type="radio" name="tipojornadatrabajo" id="46" value="46" required>
                      <label class="custom-control-label" for="46">
-                        Fijo norcturno(entre las 20:00 y 06:00 hrs)
+                        Fijo nocturno(entre las 20:00 y 06:00 hrs)
                      </label>
                   </div>
                   <div class="custom-control custom-radio">
@@ -686,7 +676,7 @@
          <!-- BOTON GUARDAR CUESTIONARIO-->
          <div class="form-group row">
             <div class="col-sm-12">
-               <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar y continuar Fase II</button>
+               <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar Respuestas Cuestionario Fase 1</button>
             </div>
          </div>
       </form>
