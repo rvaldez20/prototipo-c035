@@ -7,7 +7,7 @@
    require "config.php";
 
    // hacemos una consulta para traer los datos de la DB
-   $queryResult = $pdo->query("SELECT cuestionario.id, cuestionario.folioCuestionario, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, cuestionario.fase1, cuestionario.fechafase1, cuestionario.fase2, cuestionario.fechafase2, cuestionario.fase3, cuestionario.fechafase3, cuestionario.fase4, cuestionario.fechafase4 FROM cuestionario, trabajadores WHERE cuestionario.trabajadorId = trabajadores.id");
+   $queryResult = $pdo->query("SELECT cuestionario.id, cuestionario.folioCuestionario, cuestionario.trabajadorId, trabajadores.nombre, trabajadores.apellidop, trabajadores.apellidom, cuestionario.fase1, cuestionario.fechafase1, cuestionario.fase2, cuestionario.fechafase2, cuestionario.fase3, cuestionario.fechafase3, cuestionario.fase4, cuestionario.fechafase4 FROM cuestionario, trabajadores WHERE cuestionario.trabajadorId = trabajadores.id");
 
    // while($row = $queryResult->fetch(PDO::FETCH_ASSOC)) {
    //    var_dump($row);
@@ -39,7 +39,7 @@
                      <th scope="col">Fase 2</th>                     
                      <th scope="col">Fase 3</th>                     
                      <th scope="col">Fase 4</th>
-                     <th scope="col"></th>
+                     <th scope="col">Opciones</th>
                   </tr>
                </thead>
                <tbody>
@@ -52,33 +52,43 @@
                         echo '<td>' . $row['nombre'] . ' ' . $row['apellidop'] . ' ' . $row['apellidom'] . '</td>';
 
                         // se verifica cada fase
+
+                        // --------------FASE 1 -----------------------
                         if($row['fase1'] == 1) {
                            echo '<td><span class="badge badge-success" data-toggle="tooltip" data-placement="left" title="' . 'Aplicada: ' . $row['fechafase1'] .'">Aplicada</span></td>';
                         } else{ 
                            echo '<td><span class="badge badge-warning">Sin Aplicar</span></td>';
                         }
 
+                        // --------------FASE 2 -----------------------
+                        // a la fase 2 se le pasa el idtrabajador y el id del cuestionario
                         if($row['fase2'] == 1) {
-                           echo '<td><span class="badge badge-success">Aplicada</span></td>';
+                           echo '<td><span class="badge badge-success" data-toggle="tooltip" data-placement="left" title="' . 'Aplicada: ' . $row['fechafase2'] .'">Aplicada</span></td>';
                         } else{ 
-                           echo '<td><span class="badge badge-warning">Sin Aplicar</span></td>';
+                           echo '<td><a href="cfase2.php?trabajadorId='. $row['trabajadorId'] .'&id='. $row['id'] .'" class="badge badge-warning cursor">Aplicar Fase 2</a></td>';
                         }
 
+                        // --------------FASE 3 -----------------------
                         if($row['fase3'] == 1) {
-                           echo '<td><span class="badge badge-success">Aplicada</span></td>';
+                           echo '<td><span class="badge badge-success" data-toggle="tooltip" data-placement="left" title="' . 'Aplicada: ' . $row['fechafase3'] .'">Aplicada</span></td>';
                         } else{ 
-                           echo '<td><span class="badge badge-warning">Sin Aplicar</span></td>';
+                           echo '<td><a href="fase3.php?id='. $row['id'] .'" class="badge badge-warning cursor">Aplicar Fase 3</a></td>';
                         }
+
+                        // --------------FASE 4 -----------------------
                         if($row['fase4'] == 1) {
-                           echo '<td><span class="badge badge-success">Aplicada</span></td>';
+                           echo '<td><span class="badge badge-success" data-toggle="tooltip" data-placement="left" title="' . 'Aplicada: ' . $row['fechafase4'] .'">Aplicada</span></td>';
                         } else{ 
-                           echo '<td><span class="badge badge-warning">Sin Aplicar</span></td>';
+                           echo '<td><a href="fase4.php?id='. $row['id'] .'" class="badge badge-warning cursor">Aplicar Fase 4</a></td>';
                         }
 
                         
                         
                         
-                        echo '<td><a href="consultarCuestionario.php?id='. $row['id'] .'" class="badge badge-primary">Ver Respuestas</a></td>';
+                        echo '<td>
+                                 <a href="consultarCuestionario.php?id='. $row['id'] .'" class="badge badge-secondary cursor">Ver Respuestas</a>
+                                 <a href="EditarCuestionario.php?id='. $row['id'] .'" class="badge badge-info cursor">Editar</a>
+                              </td>';
                         // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
                         echo '</tr>';
                      }

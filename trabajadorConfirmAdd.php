@@ -53,31 +53,26 @@
 ?>
 
 
-   <!-- cuerpo body -->
-   <div class="container">
+<!-- cuerpo body -->
+<div class="container">
+   <div class="row">            
+      
+      <?php
+         if($result){
+            echo '
+            <div class="alert alert-success mt-3 col-md-12" role="alert">
+               Trabajador guardado correctamente
+            </div>
+            ';
+         }
+      ?>
 
-      <div class="row">            
-         
-
-         <?php
-            if($result){
-               echo '
-               <div class="alert alert-success mt-3 col-md-12" role="alert">
-                  Trabajador guardado correctamente
-               </div>
-               ';
-            }
-         ?>
-
-         <div class="col-md-12">
-            <a href="./trabajadores.php" class="btn btn-primary active mb-3 ml-3" role="button" aria-pressed="true">Regresar a Trabajadores</a>
-         </div>
-         
+      <div class="col-md-12">
+         <a href="./index.php" class="btn btn-primary active mb-3 ml-3" role="button" aria-pressed="true">Continuar</a>
       </div>
       
-      
-
-   </div> <!-- Cierre container -->
+   </div> <!-- Cierre row -->
+</div> <!-- Cierre container -->
 
 
 <?php
