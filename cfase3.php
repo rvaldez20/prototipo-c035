@@ -1,7 +1,14 @@
 <?php
 
+   include_once 'header.php'; 
    include_once 'config.php';
-   include_once 'header.php';
+
+   // se obtiene el ide del trabajador al que se le va aplicar la fase 2
+   $trabajadorId = $_GET['trabajadorId'];
+   // echo $trabajadorId;
+   // echo '<br>';
+   $cuestionarioId = $_GET['id'];
+   // echo $cuestionarioId;
 
 ?>
 
@@ -12,7 +19,12 @@
          <h2>Fase III. Cuestionario para identificar los factores de riesgo Psicosocial en los centros de trabajo.</h2>
       </div>
 
-      <form action="cfase4.php" method="GET">
+      <form action="cfase3ProcesarRespuestas.php" method="POST">
+
+         <!-- input hiden para pasar el id del trabajador -->
+         <input type="hidden" class="form-control" id="tid" name="idTrabajador" value="<?php echo $trabajadorId; ?>">
+         <!-- input hiden para pasar el id del cuestionario -->
+         <input type="hidden" class="form-control" id="cid" name="idCuestionario" value="<?php echo $cuestionarioId; ?>">
 
          <!-- SUBCATEGORIA-7 -->
          <div class="alert alert-danger text-left" role="alert">
@@ -2449,7 +2461,7 @@
          <!-- BOTON GUARDAR CUESTIONARIO-->
          <div class="form-group row">
             <div class="col-sm-12">
-               <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar y continuar Fase IV</button>
+               <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar Respuestas Cuestionario Fase 3</button>
             </div>
          </div>
 

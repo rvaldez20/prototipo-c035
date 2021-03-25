@@ -26,9 +26,9 @@
       <form action="cfase2ProcesarRespuestas.php" method="POST">
 
          <!-- input hiden para pasar el id del trabajador -->
-         <input type="hidden" class="form-control" id="puesto" name="idTrabajador" value="<?php echo $trabajadorId; ?>">
+         <input type="hidden" class="form-control" id="tid" name="idTrabajador" value="<?php echo $trabajadorId; ?>">
          <!-- input hiden para pasar el id del cuestionario -->
-         <input type="hidden" class="form-control" id="puesto" name="idCuestionario" value="<?php echo $cuestionarioId; ?>">
+         <input type="hidden" class="form-control" id="cid" name="idCuestionario" value="<?php echo $cuestionarioId; ?>">
          
          <div class="alert alert-success text-center" role="alert">
             <h4>¿Ha precenciado o sufrido alguna vez, durante o con motivo de trabajo un acontecimiento como los siguientes?</h4>
