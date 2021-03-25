@@ -79,7 +79,7 @@
                         if($row['fase4'] == 1) {
                            echo '<td><span class="badge badge-success" data-toggle="tooltip" data-placement="left" title="' . 'Aplicada: ' . $row['fechafase4'] .'">Aplicada</span></td>';
                         } else{ 
-                           echo '<td><a href="fase4.php?id='. $row['id'] .'" class="badge badge-warning cursor">Aplicar Fase 4</a></td>';
+                           echo '<td><a href="cfase4.php?trabajadorId='. $row['trabajadorId'] .'&id='. $row['id'] .'" class="badge badge-warning cursor">Aplicar Fase 4</a></td>';
                         }
 
                         

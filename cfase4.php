@@ -3,6 +3,13 @@
    include_once 'config.php';
    include_once 'header.php';
 
+   // se obtiene el ide del trabajador al que se le va aplicar la fase 2
+   $trabajadorId = $_GET['trabajadorId'];
+   // echo $trabajadorId;
+   // echo '<br>';
+   $cuestionarioId = $_GET['id'];
+   // echo $cuestionarioId;
+
 ?>
 
    <!-- cuerpo body -->
@@ -12,14 +19,19 @@
          <h2>Fase IV. Cuestionario para identificar los factores de riesgo Psicosocial y evaluar el entorno organizacional en los centros de trabajo.</h2>
       </div>
 
-      <form action="cfinalizado.php" method="GET">
+      <form action="cfase4ProcesarRespuestas.php" method="POST">
 
-         <!-- SUB-TITULO 17 -->
+         <!-- input hiden para pasar el id del trabajador -->
+         <input type="hidden" class="form-control" id="tid" name="idTrabajador" value="<?php echo $trabajadorId; ?>">
+         <!-- input hiden para pasar el id del cuestionario -->
+         <input type="hidden" class="form-control" id="cid" name="idCuestionario" value="<?php echo $cuestionarioId; ?>">
+
+         <!-- SUBCATEGORIA 15 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Para responder las preguntas siguientes considere las condiciones ambientales de su centro de trabajo.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 17 -->
+         <!-- PREGUNTAS SUBCATEGORIA 15 | PREGUNTA 83-87- -->
          <fieldset class="form-group">
             <!-- |83| PREGUNTA -->
             <div class="row">                                 
@@ -32,7 +44,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc17-83" id="341" value="341" required>
+                     <input class="custom-control-input" type="radio" name="p83" id="341" value="341" required>
                      <label class="custom-control-label " for="341">
                         Siempre
                      </label>
@@ -40,7 +52,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-83" id="342" value="342" required>
+                     <input class="custom-control-input" type="radio" name="p83" id="342" value="342" required>
                      <label class="custom-control-label" for="342">
                         Casi Siempre
                      </label>
@@ -48,7 +60,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-83" id="343" value="343" required>
+                     <input class="custom-control-input" type="radio" name="p83" id="343" value="343" required>
                      <label class="custom-control-label" for="343">
                         Algunas veces
                      </label>
@@ -56,7 +68,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-83" id="344" value="344" required>
+                     <input class="custom-control-input" type="radio" name="p83" id="344" value="344" required>
                      <label class="custom-control-label" for="344">
                         Casi nunca
                      </label>
@@ -64,7 +76,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-83" id="345" value="345" required>
+                     <input class="custom-control-input" type="radio" name="p83" id="345" value="345" required>
                      <label class="custom-control-label" for="345">
                         Nunca
                      </label>
@@ -82,7 +94,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc17-84" id="346" value="346" required>
+                     <input class="custom-control-input" type="radio" name="p84" id="346" value="346" required>
                      <label class="custom-control-label " for="346">
                         Siempre
                      </label>
@@ -90,7 +102,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-84" id="347" value="347" required>
+                     <input class="custom-control-input" type="radio" name="p84" id="347" value="347" required>
                      <label class="custom-control-label" for="347">
                         Casi Siempre
                      </label>
@@ -98,7 +110,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-84" id="348" value="348" required>
+                     <input class="custom-control-input" type="radio" name="p84" id="348" value="348" required>
                      <label class="custom-control-label" for="348">
                         Algunas veces
                      </label>
@@ -106,7 +118,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-84" id="349" value="349" required>
+                     <input class="custom-control-input" type="radio" name="p84" id="349" value="349" required>
                      <label class="custom-control-label" for="349">
                         Casi nunca
                      </label>
@@ -114,7 +126,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-84" id="350" value="350" required>
+                     <input class="custom-control-input" type="radio" name="p84" id="350" value="350" required>
                      <label class="custom-control-label" for="350">
                         Nunca
                      </label>
@@ -132,7 +144,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc17-85" id="351" value="351" required>
+                     <input class="custom-control-input" type="radio" name="p85" id="351" value="351" required>
                      <label class="custom-control-label " for="351">
                         Siempre
                      </label>
@@ -140,7 +152,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-85" id="352" value="352" required>
+                     <input class="custom-control-input" type="radio" name="p85" id="352" value="352" required>
                      <label class="custom-control-label" for="352">
                         Casi Siempre
                      </label>
@@ -148,7 +160,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-85" id="353" value="353" required>
+                     <input class="custom-control-input" type="radio" name="p85" id="353" value="353" required>
                      <label class="custom-control-label" for="353">
                         Algunas veces
                      </label>
@@ -156,7 +168,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-85" id="354" value="354" required>
+                     <input class="custom-control-input" type="radio" name="p85" id="354" value="354" required>
                      <label class="custom-control-label" for="354">
                         Casi nunca
                      </label>
@@ -164,7 +176,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-85" id="355" value="355" required>
+                     <input class="custom-control-input" type="radio" name="p85" id="355" value="355" required>
                      <label class="custom-control-label" for="355">
                         Nunca
                      </label>
@@ -182,7 +194,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc17-86" id="356" value="356" required>
+                     <input class="custom-control-input" type="radio" name="p86" id="356" value="356" required>
                      <label class="custom-control-label " for="356">
                         Siempre
                      </label>
@@ -190,7 +202,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-86" id="357" value="357" required>
+                     <input class="custom-control-input" type="radio" name="p86" id="357" value="357" required>
                      <label class="custom-control-label" for="357">
                         Casi Siempre
                      </label>
@@ -198,7 +210,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-86" id="358" value="358" required>
+                     <input class="custom-control-input" type="radio" name="p86" id="358" value="358" required>
                      <label class="custom-control-label" for="358">
                         Algunas veces
                      </label>
@@ -206,7 +218,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-86" id="359" value="359" required>
+                     <input class="custom-control-input" type="radio" name="p86" id="359" value="359" required>
                      <label class="custom-control-label" for="359">
                         Casi nunca
                      </label>
@@ -214,7 +226,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-86" id="360" value="360" required>
+                     <input class="custom-control-input" type="radio" name="p86" id="360" value="360" required>
                      <label class="custom-control-label" for="360">
                         Nunca
                      </label>
@@ -232,7 +244,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc17-87" id="361" value="361" required>
+                     <input class="custom-control-input" type="radio" name="p87" id="361" value="361" required>
                      <label class="custom-control-label " for="361">
                         Siempre
                      </label>
@@ -240,7 +252,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-87" id="362" value="362" required>
+                     <input class="custom-control-input" type="radio" name="p87" id="362" value="362" required>
                      <label class="custom-control-label" for="362">
                         Casi Siempre
                      </label>
@@ -248,7 +260,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-87" id="363" value="363" required>
+                     <input class="custom-control-input" type="radio" name="p87" id="363" value="363" required>
                      <label class="custom-control-label" for="363">
                         Algunas veces
                      </label>
@@ -256,7 +268,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-87" id="364" value="364" required>
+                     <input class="custom-control-input" type="radio" name="p87" id="364" value="364" required>
                      <label class="custom-control-label" for="364">
                         Casi nunca
                      </label>
@@ -264,7 +276,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc17-87" id="365" value="365" required>
+                     <input class="custom-control-input" type="radio" name="p87" id="365" value="365" required>
                      <label class="custom-control-label" for="365">
                         Nunca
                      </label>
@@ -273,12 +285,12 @@
             </div> <!-- Cierre ROW respuestas pregunta 87 -->
          </fieldset>
 
-         <!-- SUB-TITULO 18 -->
+         <!-- SUBCATEGORIA 16 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Para responder a las preguntas siguientes piense en la cantidad y ritmo de trabajo que tiene.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 18 -->
+         <!-- PREGUNTAS SUBCATEGORIA 16 | PREGUNTA 88-90 -->
          <fieldset class="form-group">
             <!-- |88| PREGUNTA -->
             <div class="row">                                 
@@ -291,7 +303,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc18-88" id="366" value="366" required>
+                     <input class="custom-control-input" type="radio" name="p88" id="366" value="366" required>
                      <label class="custom-control-label " for="366">
                         Siempre
                      </label>
@@ -299,7 +311,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-88" id="367" value="367" required>
+                     <input class="custom-control-input" type="radio" name="p88" id="367" value="367" required>
                      <label class="custom-control-label" for="367">
                         Casi Siempre
                      </label>
@@ -307,7 +319,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-88" id="368" value="368" required>
+                     <input class="custom-control-input" type="radio" name="p88" id="368" value="368" required>
                      <label class="custom-control-label" for="368">
                         Algunas veces
                      </label>
@@ -315,7 +327,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-88" id="369" value="369" required>
+                     <input class="custom-control-input" type="radio" name="p88" id="369" value="369" required>
                      <label class="custom-control-label" for="369">
                         Casi nunca
                      </label>
@@ -323,7 +335,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-88" id="370" value="370" required>
+                     <input class="custom-control-input" type="radio" name="p88" id="370" value="370" required>
                      <label class="custom-control-label" for="370">
                         Nunca
                      </label>
@@ -341,7 +353,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc18-89" id="371" value="371" required>
+                     <input class="custom-control-input" type="radio" name="p89" id="371" value="371" required>
                      <label class="custom-control-label " for="371">
                         Siempre
                      </label>
@@ -349,7 +361,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-89" id="372" value="372" required>
+                     <input class="custom-control-input" type="radio" name="p89" id="372" value="372" required>
                      <label class="custom-control-label" for="372">
                         Casi Siempre
                      </label>
@@ -357,7 +369,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-89" id="373" value="373" required>
+                     <input class="custom-control-input" type="radio" name="p89" id="373" value="373" required>
                      <label class="custom-control-label" for="373">
                         Algunas veces
                      </label>
@@ -365,7 +377,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-89" id="374" value="374" required>
+                     <input class="custom-control-input" type="radio" name="p89" id="374" value="374" required>
                      <label class="custom-control-label" for="374">
                         Casi nunca
                      </label>
@@ -373,7 +385,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-89" id="375" value="375" required>
+                     <input class="custom-control-input" type="radio" name="p89" id="375" value="375" required>
                      <label class="custom-control-label" for="375">
                         Nunca
                      </label>
@@ -391,7 +403,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc18-90" id="376" value="376" required>
+                     <input class="custom-control-input" type="radio" name="p90" id="376" value="376" required>
                      <label class="custom-control-label " for="376">
                         Siempre
                      </label>
@@ -399,7 +411,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-90" id="377" value="377" required>
+                     <input class="custom-control-input" type="radio" name="p90" id="377" value="377" required>
                      <label class="custom-control-label" for="377">
                         Casi Siempre
                      </label>
@@ -407,7 +419,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-90" id="378" value="378" required>
+                     <input class="custom-control-input" type="radio" name="p90" id="378" value="378" required>
                      <label class="custom-control-label" for="378">
                         Algunas veces
                      </label>
@@ -415,7 +427,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-90" id="379" value="379" required>
+                     <input class="custom-control-input" type="radio" name="p90" id="379" value="379" required>
                      <label class="custom-control-label" for="379">
                         Casi nunca
                      </label>
@@ -423,7 +435,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc18-90" id="380" value="380" required>
+                     <input class="custom-control-input" type="radio" name="p90" id="380" value="380" required>
                      <label class="custom-control-label" for="380">
                         Nunca
                      </label>
@@ -434,12 +446,12 @@
 
          </fieldset>
 
-         <!-- SUB-TITULO 19 -->
+         <!-- SUBCATEGORIA 17 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con el esfuerzo mental que le exige su trabajo.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 19 -->
+         <!-- PREGUNTAS SUBCATEGORIA 17 | PREGUNTA 91-94 -->
          <fieldset class="form-group">
             <!-- |91| PREGUNTA -->
             <div class="row">                                 
@@ -452,7 +464,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc19-91" id="381" value="381" required>
+                     <input class="custom-control-input" type="radio" name="p91" id="381" value="381" required>
                      <label class="custom-control-label " for="381">
                         Siempre
                      </label>
@@ -460,7 +472,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-91" id="382" value="382" required>
+                     <input class="custom-control-input" type="radio" name="p91" id="382" value="382" required>
                      <label class="custom-control-label" for="382">
                         Casi Siempre
                      </label>
@@ -468,7 +480,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-91" id="383" value="383" required>
+                     <input class="custom-control-input" type="radio" name="p91" id="383" value="383" required>
                      <label class="custom-control-label" for="383">
                         Algunas veces
                      </label>
@@ -476,7 +488,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-91" id="384" value="384" required>
+                     <input class="custom-control-input" type="radio" name="p91" id="384" value="384" required>
                      <label class="custom-control-label" for="384">
                         Casi nunca
                      </label>
@@ -484,7 +496,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-91" id="385" value="385" required>
+                     <input class="custom-control-input" type="radio" name="p91" id="385" value="385" required>
                      <label class="custom-control-label" for="385">
                         Nunca
                      </label>
@@ -502,7 +514,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc19-92" id="386" value="386" required>
+                     <input class="custom-control-input" type="radio" name="p92" id="386" value="386" required>
                      <label class="custom-control-label " for="386">
                         Siempre
                      </label>
@@ -510,7 +522,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-92" id="387" value="387" required>
+                     <input class="custom-control-input" type="radio" name="p92" id="387" value="387" required>
                      <label class="custom-control-label" for="387">
                         Casi Siempre
                      </label>
@@ -518,7 +530,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-92" id="388" value="388" required>
+                     <input class="custom-control-input" type="radio" name="p92" id="388" value="388" required>
                      <label class="custom-control-label" for="388">
                         Algunas veces
                      </label>
@@ -526,7 +538,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-92" id="389" value="389" required>
+                     <input class="custom-control-input" type="radio" name="p92" id="389" value="389" required>
                      <label class="custom-control-label" for="389">
                         Casi nunca
                      </label>
@@ -534,7 +546,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-92" id="390" value="390" required>
+                     <input class="custom-control-input" type="radio" name="p92" id="390" value="390" required>
                      <label class="custom-control-label" for="390">
                         Nunca
                      </label>
@@ -552,7 +564,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc19-93" id="391" value="391" required>
+                     <input class="custom-control-input" type="radio" name="p93" id="391" value="391" required>
                      <label class="custom-control-label " for="391">
                         Siempre
                      </label>
@@ -560,7 +572,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-93" id="392" value="392" required>
+                     <input class="custom-control-input" type="radio" name="p93" id="392" value="392" required>
                      <label class="custom-control-label" for="392">
                         Casi Siempre
                      </label>
@@ -568,7 +580,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-93" id="393" value="393" required>
+                     <input class="custom-control-input" type="radio" name="p93" id="393" value="393" required>
                      <label class="custom-control-label" for="393">
                         Algunas veces
                      </label>
@@ -576,7 +588,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-93" id="394" value="394" required>
+                     <input class="custom-control-input" type="radio" name="p93" id="394" value="394" required>
                      <label class="custom-control-label" for="394">
                         Casi nunca
                      </label>
@@ -584,7 +596,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-93" id="395" value="395" required>
+                     <input class="custom-control-input" type="radio" name="p93" id="395" value="395" required>
                      <label class="custom-control-label" for="395">
                         Nunca
                      </label>
@@ -602,7 +614,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc19-94" id="396" value="396" required>
+                     <input class="custom-control-input" type="radio" name="p94" id="396" value="396" required>
                      <label class="custom-control-label " for="396">
                         Siempre
                      </label>
@@ -610,7 +622,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-94" id="397" value="397" required>
+                     <input class="custom-control-input" type="radio" name="p94" id="397" value="397" required>
                      <label class="custom-control-label" for="397">
                         Casi Siempre
                      </label>
@@ -618,7 +630,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-94" id="398" value="398" required>
+                     <input class="custom-control-input" type="radio" name="p94" id="398" value="398" required>
                      <label class="custom-control-label" for="398">
                         Algunas veces
                      </label>
@@ -626,7 +638,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-94" id="399" value="399" required>
+                     <input class="custom-control-input" type="radio" name="p94" id="399" value="399" required>
                      <label class="custom-control-label" for="399">
                         Casi nunca
                      </label>
@@ -634,7 +646,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc19-94" id="400" value="400" required>
+                     <input class="custom-control-input" type="radio" name="p94" id="400" value="400" required>
                      <label class="custom-control-label" for="400">
                         Nunca
                      </label>
@@ -645,12 +657,12 @@
 
          </fieldset>
 
-         <!-- SUB-TITULO 20 -->
+         <!-- SUBCATEGORIA 18 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con las actividades que realiza en su trabajo y las responsabilidades que tiene.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 20 -->
+         <!-- PREGUNTAS SUBCATEGORIA 18 | PREGUNTA 95-98 -->
          <fieldset class="form-group">
             <!-- |95| PREGUNTA -->
             <div class="row">                                 
@@ -663,7 +675,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc20-95" id="401" value="401" required>
+                     <input class="custom-control-input" type="radio" name="p95" id="401" value="401" required>
                      <label class="custom-control-label " for="401">
                         Siempre
                      </label>
@@ -671,7 +683,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-95" id="402" value="402" required>
+                     <input class="custom-control-input" type="radio" name="p95" id="402" value="402" required>
                      <label class="custom-control-label" for="402">
                         Casi Siempre
                      </label>
@@ -679,7 +691,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-95" id="403" value="403" required>
+                     <input class="custom-control-input" type="radio" name="p95" id="403" value="403" required>
                      <label class="custom-control-label" for="403">
                         Algunas veces
                      </label>
@@ -687,7 +699,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-95" id="404" value="404" required>
+                     <input class="custom-control-input" type="radio" name="p95" id="404" value="404" required>
                      <label class="custom-control-label" for="404">
                         Casi nunca
                      </label>
@@ -695,7 +707,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-95" id="405" value="405" required>
+                     <input class="custom-control-input" type="radio" name="p95" id="405" value="405" required>
                      <label class="custom-control-label" for="405">
                         Nunca
                      </label>
@@ -713,7 +725,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc20-96" id="406" value="406" required>
+                     <input class="custom-control-input" type="radio" name="p96" id="406" value="406" required>
                      <label class="custom-control-label " for="406">
                         Siempre
                      </label>
@@ -721,7 +733,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-96" id="407" value="407" required>
+                     <input class="custom-control-input" type="radio" name="p96" id="407" value="407" required>
                      <label class="custom-control-label" for="407">
                         Casi Siempre
                      </label>
@@ -729,7 +741,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-96" id="408" value="408" required>
+                     <input class="custom-control-input" type="radio" name="p96" id="408" value="408" required>
                      <label class="custom-control-label" for="408">
                         Algunas veces
                      </label>
@@ -737,7 +749,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-96" id="409" value="409" required>
+                     <input class="custom-control-input" type="radio" name="p96" id="409" value="409" required>
                      <label class="custom-control-label" for="409">
                         Casi nunca
                      </label>
@@ -745,7 +757,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-96" id="410" value="410" required>
+                     <input class="custom-control-input" type="radio" name="p96" id="410" value="410" required>
                      <label class="custom-control-label" for="410">
                         Nunca
                      </label>
@@ -763,7 +775,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc20-97" id="411" value="411" required>
+                     <input class="custom-control-input" type="radio" name="p97" id="411" value="411" required>
                      <label class="custom-control-label " for="411">
                         Siempre
                      </label>
@@ -771,7 +783,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-97" id="412" value="412" required>
+                     <input class="custom-control-input" type="radio" name="p97" id="412" value="412" required>
                      <label class="custom-control-label" for="412">
                         Casi Siempre
                      </label>
@@ -779,7 +791,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-97" id="413" value="413" required>
+                     <input class="custom-control-input" type="radio" name="p97" id="413" value="413" required>
                      <label class="custom-control-label" for="413">
                         Algunas veces
                      </label>
@@ -787,7 +799,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-97" id="414" value="414" required>
+                     <input class="custom-control-input" type="radio" name="p97" id="414" value="414" required>
                      <label class="custom-control-label" for="414">
                         Casi nunca
                      </label>
@@ -795,7 +807,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-97" id="415" value="415" required>
+                     <input class="custom-control-input" type="radio" name="p97" id="415" value="415" required>
                      <label class="custom-control-label" for="415">
                         Nunca
                      </label>
@@ -813,7 +825,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc20-98" id="416" value="416" required>
+                     <input class="custom-control-input" type="radio" name="p98" id="416" value="416" required>
                      <label class="custom-control-label " for="416">
                         Siempre
                      </label>
@@ -821,7 +833,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-98" id="417" value="417" required>
+                     <input class="custom-control-input" type="radio" name="p98" id="417" value="417" required>
                      <label class="custom-control-label" for="417">
                         Casi Siempre
                      </label>
@@ -829,7 +841,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-98" id="418" value="418" required>
+                     <input class="custom-control-input" type="radio" name="p98" id="418" value="418" required>
                      <label class="custom-control-label" for="418">
                         Algunas veces
                      </label>
@@ -837,7 +849,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-98" id="419" value="419" required>
+                     <input class="custom-control-input" type="radio" name="p98" id="419" value="419" required>
                      <label class="custom-control-label" for="419">
                         Casi nunca
                      </label>
@@ -845,7 +857,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc20-98" id="420" value="420" required>
+                     <input class="custom-control-input" type="radio" name="p98" id="420" value="420" required>
                      <label class="custom-control-label" for="420">
                         Nunca
                      </label>
@@ -856,12 +868,12 @@
 
          </fieldset>
 
-         <!-- SUB-TITULO 21 -->
+         <!-- SUBCATEGORIA 19 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con su jornada de trabajo.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 21 -->
+         <!-- PREGUNTAS SUBCATEGORIA 19 | PREGUNTA 99-104 -->
          <fieldset class="form-group">
             <!-- |99| PREGUNTA -->
             <div class="row">                                 
@@ -874,7 +886,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc21-99" id="421" value="421" required>
+                     <input class="custom-control-input" type="radio" name="p99" id="421" value="421" required>
                      <label class="custom-control-label " for="421">
                         Siempre
                      </label>
@@ -882,7 +894,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-99" id="422" value="422" required>
+                     <input class="custom-control-input" type="radio" name="p99" id="422" value="422" required>
                      <label class="custom-control-label" for="422">
                         Casi Siempre
                      </label>
@@ -890,7 +902,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-99" id="423" value="423" required>
+                     <input class="custom-control-input" type="radio" name="p99" id="423" value="423" required>
                      <label class="custom-control-label" for="423">
                         Algunas veces
                      </label>
@@ -898,7 +910,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-99" id="424" value="424" required>
+                     <input class="custom-control-input" type="radio" name="p99" id="424" value="424" required>
                      <label class="custom-control-label" for="424">
                         Casi nunca
                      </label>
@@ -906,7 +918,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-99" id="425" value="425" required>
+                     <input class="custom-control-input" type="radio" name="p99" id="425" value="425" required>
                      <label class="custom-control-label" for="425">
                         Nunca
                      </label>
@@ -924,7 +936,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc21-100" id="426" value="426" required>
+                     <input class="custom-control-input" type="radio" name="p100" id="426" value="426" required>
                      <label class="custom-control-label " for="426">
                         Siempre
                      </label>
@@ -932,7 +944,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-100" id="427" value="427" required>
+                     <input class="custom-control-input" type="radio" name="p100" id="427" value="427" required>
                      <label class="custom-control-label" for="427">
                         Casi Siempre
                      </label>
@@ -940,7 +952,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-100" id="428" value="428" required>
+                     <input class="custom-control-input" type="radio" name="p100" id="428" value="428" required>
                      <label class="custom-control-label" for="428">
                         Algunas veces
                      </label>
@@ -948,7 +960,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-100" id="429" value="429" required>
+                     <input class="custom-control-input" type="radio" name="p100" id="429" value="429" required>
                      <label class="custom-control-label" for="429">
                         Casi nunca
                      </label>
@@ -956,7 +968,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-100" id="430" value="430" required>
+                     <input class="custom-control-input" type="radio" name="p100" id="430" value="430" required>
                      <label class="custom-control-label" for="430">
                         Nunca
                      </label>
@@ -974,7 +986,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc21-101" id="431" value="431" required>
+                     <input class="custom-control-input" type="radio" name="p101" id="431" value="431" required>
                      <label class="custom-control-label " for="431">
                         Siempre
                      </label>
@@ -982,7 +994,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-101" id="432" value="432" required>
+                     <input class="custom-control-input" type="radio" name="p101" id="432" value="432" required>
                      <label class="custom-control-label" for="432">
                         Casi Siempre
                      </label>
@@ -990,7 +1002,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-101" id="433" value="433" required>
+                     <input class="custom-control-input" type="radio" name="p101" id="433" value="433" required>
                      <label class="custom-control-label" for="433">
                         Algunas veces
                      </label>
@@ -998,7 +1010,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-101" id="434" value="434" required>
+                     <input class="custom-control-input" type="radio" name="p101" id="434" value="434" required>
                      <label class="custom-control-label" for="434">
                         Casi nunca
                      </label>
@@ -1006,7 +1018,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-101" id="435" value="435" required>
+                     <input class="custom-control-input" type="radio" name="p101" id="435" value="435" required>
                      <label class="custom-control-label" for="435">
                         Nunca
                      </label>
@@ -1024,7 +1036,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc21-102" id="436" value="436" required>
+                     <input class="custom-control-input" type="radio" name="p102" id="436" value="436" required>
                      <label class="custom-control-label " for="436">
                         Siempre
                      </label>
@@ -1032,7 +1044,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-102" id="437" value="437" required>
+                     <input class="custom-control-input" type="radio" name="p102" id="437" value="437" required>
                      <label class="custom-control-label" for="437">
                         Casi Siempre
                      </label>
@@ -1040,7 +1052,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-102" id="438" value="438" required>
+                     <input class="custom-control-input" type="radio" name="p102" id="438" value="438" required>
                      <label class="custom-control-label" for="438">
                         Algunas veces
                      </label>
@@ -1048,7 +1060,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-102" id="439" value="439" required>
+                     <input class="custom-control-input" type="radio" name="p102" id="439" value="439" required>
                      <label class="custom-control-label" for="439">
                         Casi nunca
                      </label>
@@ -1056,7 +1068,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-102" id="440" value="440" required>
+                     <input class="custom-control-input" type="radio" name="p102" id="440" value="440" required>
                      <label class="custom-control-label" for="440">
                         Nunca
                      </label>
@@ -1074,7 +1086,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc21-103" id="441" value="441" required>
+                     <input class="custom-control-input" type="radio" name="p103" id="441" value="441" required>
                      <label class="custom-control-label " for="441">
                         Siempre
                      </label>
@@ -1082,7 +1094,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-103" id="442" value="442" required>
+                     <input class="custom-control-input" type="radio" name="p103" id="442" value="442" required>
                      <label class="custom-control-label" for="442">
                         Casi Siempre
                      </label>
@@ -1090,7 +1102,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-103" id="443" value="443" required>
+                     <input class="custom-control-input" type="radio" name="p103" id="443" value="443" required>
                      <label class="custom-control-label" for="443">
                         Algunas veces
                      </label>
@@ -1098,7 +1110,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-103" id="444" value="444" required>
+                     <input class="custom-control-input" type="radio" name="p103" id="444" value="444" required>
                      <label class="custom-control-label" for="444">
                         Casi nunca
                      </label>
@@ -1106,7 +1118,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-103" id="445" value="445" required>
+                     <input class="custom-control-input" type="radio" name="p103" id="445" value="445" required>
                      <label class="custom-control-label" for="445">
                         Nunca
                      </label>
@@ -1124,7 +1136,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc21-104" id="446" value="446" required>
+                     <input class="custom-control-input" type="radio" name="p104" id="446" value="446" required>
                      <label class="custom-control-label " for="446">
                         Siempre
                      </label>
@@ -1132,7 +1144,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-104" id="447" value="447" required>
+                     <input class="custom-control-input" type="radio" name="p104" id="447" value="447" required>
                      <label class="custom-control-label" for="447">
                         Casi Siempre
                      </label>
@@ -1140,7 +1152,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-104" id="448" value="448" required>
+                     <input class="custom-control-input" type="radio" name="p104" id="448" value="448" required>
                      <label class="custom-control-label" for="448">
                         Algunas veces
                      </label>
@@ -1148,7 +1160,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-104" id="449" value="449" required>
+                     <input class="custom-control-input" type="radio" name="p104" id="449" value="449" required>
                      <label class="custom-control-label" for="449">
                         Casi nunca
                      </label>
@@ -1156,7 +1168,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc21-104" id="450" value="450" required>
+                     <input class="custom-control-input" type="radio" name="p104" id="450" value="450" required>
                      <label class="custom-control-label" for="450">
                         Nunca
                      </label>
@@ -1167,12 +1179,12 @@
 
          </fieldset>
 
-         <!-- SUB-TITULO 22 -->
+         <!-- SUBCATEGORIA 20 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con las decisiones que puede tomar en su trabajo.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 22 -->
+         <!-- PREGUNTAS SUBCATEGORIA 20 | PREGUNTA 105-110 -->
          <fieldset class="form-group">
             <!-- |105| PREGUNTA -->
             <div class="row">                                 
@@ -1185,7 +1197,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc22-105" id="451" value="451" required>
+                     <input class="custom-control-input" type="radio" name="p105" id="451" value="451" required>
                      <label class="custom-control-label " for="451">
                         Siempre
                      </label>
@@ -1193,7 +1205,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-105" id="452" value="452" required>
+                     <input class="custom-control-input" type="radio" name="p105" id="452" value="452" required>
                      <label class="custom-control-label" for="452">
                         Casi Siempre
                      </label>
@@ -1201,7 +1213,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-105" id="453" value="453" required>
+                     <input class="custom-control-input" type="radio" name="p105" id="453" value="453" required>
                      <label class="custom-control-label" for="453">
                         Algunas veces
                      </label>
@@ -1209,7 +1221,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-105" id="454" value="454" required>
+                     <input class="custom-control-input" type="radio" name="p105" id="454" value="454" required>
                      <label class="custom-control-label" for="454">
                         Casi nunca
                      </label>
@@ -1217,7 +1229,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-105" id="455" value="455" required>
+                     <input class="custom-control-input" type="radio" name="p105" id="455" value="455" required>
                      <label class="custom-control-label" for="455">
                         Nunca
                      </label>
@@ -1235,7 +1247,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc22-106" id="456" value="456" required>
+                     <input class="custom-control-input" type="radio" name="p106" id="456" value="456" required>
                      <label class="custom-control-label " for="456">
                         Siempre
                      </label>
@@ -1243,7 +1255,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-106" id="457" value="457" required>
+                     <input class="custom-control-input" type="radio" name="p106" id="457" value="457" required>
                      <label class="custom-control-label" for="457">
                         Casi Siempre
                      </label>
@@ -1251,7 +1263,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-106" id="458" value="458" required>
+                     <input class="custom-control-input" type="radio" name="p106" id="458" value="458" required>
                      <label class="custom-control-label" for="458">
                         Algunas veces
                      </label>
@@ -1259,7 +1271,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-106" id="459" value="459" required>
+                     <input class="custom-control-input" type="radio" name="p106" id="459" value="459" required>
                      <label class="custom-control-label" for="459">
                         Casi nunca
                      </label>
@@ -1267,7 +1279,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-106" id="460" value="460" required>
+                     <input class="custom-control-input" type="radio" name="p106" id="460" value="460" required>
                      <label class="custom-control-label" for="460">
                         Nunca
                      </label>
@@ -1285,7 +1297,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc22-107" id="461" value="461" required>
+                     <input class="custom-control-input" type="radio" name="p107" id="461" value="461" required>
                      <label class="custom-control-label " for="461">
                         Siempre
                      </label>
@@ -1293,7 +1305,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-107" id="462" value="462" required>
+                     <input class="custom-control-input" type="radio" name="p107" id="462" value="462" required>
                      <label class="custom-control-label" for="462">
                         Casi Siempre
                      </label>
@@ -1301,7 +1313,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-107" id="463" value="463" required>
+                     <input class="custom-control-input" type="radio" name="p107" id="463" value="463" required>
                      <label class="custom-control-label" for="463">
                         Algunas veces
                      </label>
@@ -1309,7 +1321,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-107" id="464" value="464" required>
+                     <input class="custom-control-input" type="radio" name="p107" id="464" value="464" required>
                      <label class="custom-control-label" for="464">
                         Casi nunca
                      </label>
@@ -1317,7 +1329,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-107" id="465" value="465" required>
+                     <input class="custom-control-input" type="radio" name="p107" id="465" value="465" required>
                      <label class="custom-control-label" for="465">
                         Nunca
                      </label>
@@ -1335,7 +1347,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc22-108" id="466" value="466" required>
+                     <input class="custom-control-input" type="radio" name="p108" id="466" value="466" required>
                      <label class="custom-control-label " for="466">
                         Siempre
                      </label>
@@ -1343,7 +1355,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-108" id="467" value="467" required>
+                     <input class="custom-control-input" type="radio" name="p108" id="467" value="467" required>
                      <label class="custom-control-label" for="467">
                         Casi Siempre
                      </label>
@@ -1351,7 +1363,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-108" id="468" value="468" required>
+                     <input class="custom-control-input" type="radio" name="p108" id="468" value="468" required>
                      <label class="custom-control-label" for="468">
                         Algunas veces
                      </label>
@@ -1359,7 +1371,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-108" id="469" value="469" required>
+                     <input class="custom-control-input" type="radio" name="p108" id="469" value="469" required>
                      <label class="custom-control-label" for="469">
                         Casi nunca
                      </label>
@@ -1367,7 +1379,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-108" id="470" value="470" required>
+                     <input class="custom-control-input" type="radio" name="p108" id="470" value="470" required>
                      <label class="custom-control-label" for="470">
                         Nunca
                      </label>
@@ -1385,7 +1397,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc22-109" id="471" value="471" required>
+                     <input class="custom-control-input" type="radio" name="p109" id="471" value="471" required>
                      <label class="custom-control-label " for="471">
                         Siempre
                      </label>
@@ -1393,7 +1405,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-109" id="472" value="472" required>
+                     <input class="custom-control-input" type="radio" name="p109" id="472" value="472" required>
                      <label class="custom-control-label" for="472">
                         Casi Siempre
                      </label>
@@ -1401,7 +1413,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-109" id="473" value="473" required>
+                     <input class="custom-control-input" type="radio" name="p109" id="473" value="473" required>
                      <label class="custom-control-label" for="473">
                         Algunas veces
                      </label>
@@ -1409,7 +1421,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-109" id="474" value="474" required>
+                     <input class="custom-control-input" type="radio" name="p109" id="474" value="474" required>
                      <label class="custom-control-label" for="474">
                         Casi nunca
                      </label>
@@ -1417,7 +1429,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-109" id="475" value="475" required>
+                     <input class="custom-control-input" type="radio" name="p109" id="475" value="475" required>
                      <label class="custom-control-label" for="475">
                         Nunca
                      </label>
@@ -1435,7 +1447,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc22-110" id="476" value="476" required>
+                     <input class="custom-control-input" type="radio" name="p110" id="476" value="476" required>
                      <label class="custom-control-label " for="476">
                         Siempre
                      </label>
@@ -1443,7 +1455,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-110" id="477" value="477" required>
+                     <input class="custom-control-input" type="radio" name="p110" id="477" value="477" required>
                      <label class="custom-control-label" for="477">
                         Casi Siempre
                      </label>
@@ -1451,7 +1463,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-110" id="478" value="478" required>
+                     <input class="custom-control-input" type="radio" name="p110" id="478" value="478" required>
                      <label class="custom-control-label" for="478">
                         Algunas veces
                      </label>
@@ -1459,7 +1471,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-110" id="479" value="479" required>
+                     <input class="custom-control-input" type="radio" name="p110" id="479" value="479" required>
                      <label class="custom-control-label" for="479">
                         Casi nunca
                      </label>
@@ -1467,7 +1479,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc22-110" id="480" value="480" required>
+                     <input class="custom-control-input" type="radio" name="p110" id="480" value="480" required>
                      <label class="custom-control-label" for="480">
                         Nunca
                      </label>
@@ -1478,12 +1490,12 @@
             
          </fieldset>
          
-         <!-- SUB-TITULO 23 -->
+         <!-- SUBCATEGORIA 21 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con cualquier tipo de cambio que ocurra en su trabajo (considere los últimos cambios realizados).</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 23 -->
+         <!-- PREGUNTAS SUBCATEGORIA 21 | PREGUNTA 111-112  -->
          <fieldset class="form-group">
             <!-- |111| PREGUNTA -->
             <div class="row">                                 
@@ -1496,7 +1508,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc23-111" id="481" value="481" required>
+                     <input class="custom-control-input" type="radio" name="p111" id="481" value="481" required>
                      <label class="custom-control-label " for="481">
                         Siempre
                      </label>
@@ -1504,7 +1516,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-111" id="482" value="482" required>
+                     <input class="custom-control-input" type="radio" name="p111" id="482" value="482" required>
                      <label class="custom-control-label" for="482">
                         Casi Siempre
                      </label>
@@ -1512,7 +1524,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-111" id="483" value="483" required>
+                     <input class="custom-control-input" type="radio" name="p111" id="483" value="483" required>
                      <label class="custom-control-label" for="483">
                         Algunas veces
                      </label>
@@ -1520,7 +1532,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-111" id="484" value="484" required>
+                     <input class="custom-control-input" type="radio" name="p111" id="484" value="484" required>
                      <label class="custom-control-label" for="484">
                         Casi nunca
                      </label>
@@ -1528,7 +1540,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-111" id="485" value="485" required>
+                     <input class="custom-control-input" type="radio" name="p111" id="485" value="485" required>
                      <label class="custom-control-label" for="485">
                         Nunca
                      </label>
@@ -1546,7 +1558,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc23-112" id="486" value="486" required>
+                     <input class="custom-control-input" type="radio" name="p112" id="486" value="486" required>
                      <label class="custom-control-label " for="486">
                         Siempre
                      </label>
@@ -1554,7 +1566,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-112" id="487" value="487" required>
+                     <input class="custom-control-input" type="radio" name="p112" id="487" value="487" required>
                      <label class="custom-control-label" for="487">
                         Casi Siempre
                      </label>
@@ -1562,7 +1574,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-112" id="488" value="488" required>
+                     <input class="custom-control-input" type="radio" name="p112" id="488" value="488" required>
                      <label class="custom-control-label" for="488">
                         Algunas veces
                      </label>
@@ -1570,7 +1582,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-112" id="489" value="489" required>
+                     <input class="custom-control-input" type="radio" name="p112" id="489" value="489" required>
                      <label class="custom-control-label" for="489">
                         Casi nunca
                      </label>
@@ -1578,7 +1590,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc23-112" id="490" value="490" required>
+                     <input class="custom-control-input" type="radio" name="p112" id="490" value="490" required>
                      <label class="custom-control-label" for="490">
                         Nunca
                      </label>
@@ -1587,12 +1599,12 @@
             </div> <!-- Cierre ROW respuestas pregunta 112 -->                           
          </fieldset>
 
-         <!-- SUB-TITULO 24 -->
+         <!-- SUBCATEGORIA 22 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con la capacitación e información que se le proporciona sobre su trabajo.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 24 -->
+         <!-- PREGUNTAS SUBCATEGORIA 22 | PREGUNTA 113-118  -->
          <fieldset class="form-group">
             <!-- |113| PREGUNTA -->
             <div class="row">                                 
@@ -1605,7 +1617,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc24-113" id="491" value="491" required>
+                     <input class="custom-control-input" type="radio" name="p113" id="491" value="491" required>
                      <label class="custom-control-label " for="491">
                         Siempre
                      </label>
@@ -1613,7 +1625,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-113" id="492" value="492" required>
+                     <input class="custom-control-input" type="radio" name="p113" id="492" value="492" required>
                      <label class="custom-control-label" for="492">
                         Casi Siempre
                      </label>
@@ -1621,7 +1633,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-113" id="493" value="493" required>
+                     <input class="custom-control-input" type="radio" name="p113" id="493" value="493" required>
                      <label class="custom-control-label" for="493">
                         Algunas veces
                      </label>
@@ -1629,7 +1641,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-113" id="494" value="494" required>
+                     <input class="custom-control-input" type="radio" name="p113" id="494" value="494" required>
                      <label class="custom-control-label" for="494">
                         Casi nunca
                      </label>
@@ -1637,7 +1649,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-113" id="495" value="495" required>
+                     <input class="custom-control-input" type="radio" name="p113" id="495" value="495" required>
                      <label class="custom-control-label" for="495">
                         Nunca
                      </label>
@@ -1655,7 +1667,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc24-114" id="496" value="496" required>
+                     <input class="custom-control-input" type="radio" name="p114" id="496" value="496" required>
                      <label class="custom-control-label " for="496">
                         Siempre
                      </label>
@@ -1663,7 +1675,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-114" id="497" value="497" required>
+                     <input class="custom-control-input" type="radio" name="p114" id="497" value="497" required>
                      <label class="custom-control-label" for="497">
                         Casi Siempre
                      </label>
@@ -1671,7 +1683,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-114" id="498" value="498" required>
+                     <input class="custom-control-input" type="radio" name="p114" id="498" value="498" required>
                      <label class="custom-control-label" for="498">
                         Algunas veces
                      </label>
@@ -1679,7 +1691,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-114" id="499" value="499" required>
+                     <input class="custom-control-input" type="radio" name="p114" id="499" value="499" required>
                      <label class="custom-control-label" for="499">
                         Casi nunca
                      </label>
@@ -1687,7 +1699,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-114" id="500" value="500" required>
+                     <input class="custom-control-input" type="radio" name="p114" id="500" value="500" required>
                      <label class="custom-control-label" for="500">
                         Nunca
                      </label>
@@ -1705,7 +1717,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc24-115" id="501" value="501" required>
+                     <input class="custom-control-input" type="radio" name="p115" id="501" value="501" required>
                      <label class="custom-control-label " for="501">
                         Siempre
                      </label>
@@ -1713,7 +1725,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-115" id="502" value="502" required>
+                     <input class="custom-control-input" type="radio" name="p115" id="502" value="502" required>
                      <label class="custom-control-label" for="502">
                         Casi Siempre
                      </label>
@@ -1721,7 +1733,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-115" id="503" value="503" required>
+                     <input class="custom-control-input" type="radio" name="p115" id="503" value="503" required>
                      <label class="custom-control-label" for="503">
                         Algunas veces
                      </label>
@@ -1729,7 +1741,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-115" id="504" value="504" required>
+                     <input class="custom-control-input" type="radio" name="p115" id="504" value="504" required>
                      <label class="custom-control-label" for="504">
                         Casi nunca
                      </label>
@@ -1737,7 +1749,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-115" id="505" value="505" required>
+                     <input class="custom-control-input" type="radio" name="p115" id="505" value="505" required>
                      <label class="custom-control-label" for="505">
                         Nunca
                      </label>
@@ -1755,7 +1767,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc24-116" id="506" value="506" required>
+                     <input class="custom-control-input" type="radio" name="p116" id="506" value="506" required>
                      <label class="custom-control-label " for="506">
                         Siempre
                      </label>
@@ -1763,7 +1775,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-116" id="507" value="507" required>
+                     <input class="custom-control-input" type="radio" name="p116" id="507" value="507" required>
                      <label class="custom-control-label" for="507">
                         Casi Siempre
                      </label>
@@ -1771,7 +1783,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-116" id="508" value="508" required>
+                     <input class="custom-control-input" type="radio" name="p116" id="508" value="508" required>
                      <label class="custom-control-label" for="508">
                         Algunas veces
                      </label>
@@ -1779,7 +1791,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-116" id="509" value="509" required>
+                     <input class="custom-control-input" type="radio" name="p116" id="509" value="509" required>
                      <label class="custom-control-label" for="509">
                         Casi nunca
                      </label>
@@ -1787,7 +1799,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-116" id="510" value="510" required>
+                     <input class="custom-control-input" type="radio" name="p116" id="510" value="510" required>
                      <label class="custom-control-label" for="510">
                         Nunca
                      </label>
@@ -1805,7 +1817,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc24-117" id="511" value="511" required>
+                     <input class="custom-control-input" type="radio" name="p117" id="511" value="511" required>
                      <label class="custom-control-label " for="511">
                         Siempre
                      </label>
@@ -1813,7 +1825,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-117" id="512" value="512" required>
+                     <input class="custom-control-input" type="radio" name="p117" id="512" value="512" required>
                      <label class="custom-control-label" for="512">
                         Casi Siempre
                      </label>
@@ -1821,7 +1833,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-117" id="513" value="513" required>
+                     <input class="custom-control-input" type="radio" name="p117" id="513" value="513" required>
                      <label class="custom-control-label" for="513">
                         Algunas veces
                      </label>
@@ -1829,7 +1841,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-117" id="514" value="514" required>
+                     <input class="custom-control-input" type="radio" name="p117" id="514" value="514" required>
                      <label class="custom-control-label" for="514">
                         Casi nunca
                      </label>
@@ -1837,7 +1849,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-117" id="515" value="515" required>
+                     <input class="custom-control-input" type="radio" name="p117" id="515" value="515" required>
                      <label class="custom-control-label" for="515">
                         Nunca
                      </label>
@@ -1855,7 +1867,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc24-118" id="516" value="516" required>
+                     <input class="custom-control-input" type="radio" name="p118" id="516" value="516" required>
                      <label class="custom-control-label " for="516">
                         Siempre
                      </label>
@@ -1863,7 +1875,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-118" id="517" value="517" required>
+                     <input class="custom-control-input" type="radio" name="p118" id="517" value="517" required>
                      <label class="custom-control-label" for="517">
                         Casi Siempre
                      </label>
@@ -1871,7 +1883,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-118" id="518" value="518" required>
+                     <input class="custom-control-input" type="radio" name="p118" id="518" value="518" required>
                      <label class="custom-control-label" for="518">
                         Algunas veces
                      </label>
@@ -1879,7 +1891,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-118" id="519" value="519" required>
+                     <input class="custom-control-input" type="radio" name="p118" id="519" value="519" required>
                      <label class="custom-control-label" for="519">
                         Casi nunca
                      </label>
@@ -1887,7 +1899,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc24-118" id="520" value="520" required>
+                     <input class="custom-control-input" type="radio" name="p118" id="520" value="520" required>
                      <label class="custom-control-label" for="520">
                         Nunca
                      </label>
@@ -1898,12 +1910,12 @@
             
          </fieldset>
 
-         <!-- SUB-TITULO 25 -->
+         <!-- SUBCATEGORIA 23 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con el o los jefes con quien tiene contacto.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 25 -->
+         <!-- PREGUNTAS SUBCATEGORIA 23 | PREGUNTA 119-123 -->
          <fieldset class="form-group">
             <!-- |119| PREGUNTA -->
             <div class="row">                                 
@@ -1916,7 +1928,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc25-119" id="521" value="521" required>
+                     <input class="custom-control-input" type="radio" name="p119" id="521" value="521" required>
                      <label class="custom-control-label " for="521">
                         Siempre
                      </label>
@@ -1924,7 +1936,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-119" id="522" value="522" required>
+                     <input class="custom-control-input" type="radio" name="p119" id="522" value="522" required>
                      <label class="custom-control-label" for="522">
                         Casi Siempre
                      </label>
@@ -1932,7 +1944,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-119" id="523" value="523" required>
+                     <input class="custom-control-input" type="radio" name="p119" id="523" value="523" required>
                      <label class="custom-control-label" for="523">
                         Algunas veces
                      </label>
@@ -1940,7 +1952,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-119" id="524" value="524" required>
+                     <input class="custom-control-input" type="radio" name="p119" id="524" value="524" required>
                      <label class="custom-control-label" for="524">
                         Casi nunca
                      </label>
@@ -1948,7 +1960,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-119" id="525" value="525" required>
+                     <input class="custom-control-input" type="radio" name="p119" id="525" value="525" required>
                      <label class="custom-control-label" for="525">
                         Nunca
                      </label>
@@ -1966,7 +1978,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc25-120" id="526" value="526" required>
+                     <input class="custom-control-input" type="radio" name="p120" id="526" value="526" required>
                      <label class="custom-control-label " for="526">
                         Siempre
                      </label>
@@ -1974,7 +1986,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-120" id="527" value="527" required>
+                     <input class="custom-control-input" type="radio" name="p120" id="527" value="527" required>
                      <label class="custom-control-label" for="527">
                         Casi Siempre
                      </label>
@@ -1982,7 +1994,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-120" id="528" value="528" required>
+                     <input class="custom-control-input" type="radio" name="p120" id="528" value="528" required>
                      <label class="custom-control-label" for="528">
                         Algunas veces
                      </label>
@@ -1990,7 +2002,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-120" id="529" value="529" required>
+                     <input class="custom-control-input" type="radio" name="p120" id="529" value="529" required>
                      <label class="custom-control-label" for="529">
                         Casi nunca
                      </label>
@@ -1998,7 +2010,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-120" id="530" value="530" required>
+                     <input class="custom-control-input" type="radio" name="p120" id="530" value="530" required>
                      <label class="custom-control-label" for="530">
                         Nunca
                      </label>
@@ -2016,7 +2028,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc25-121" id="531" value="531" required>
+                     <input class="custom-control-input" type="radio" name="p121" id="531" value="531" required>
                      <label class="custom-control-label " for="531">
                         Siempre
                      </label>
@@ -2024,7 +2036,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-121" id="532" value="532" required>
+                     <input class="custom-control-input" type="radio" name="p121" id="532" value="532" required>
                      <label class="custom-control-label" for="532">
                         Casi Siempre
                      </label>
@@ -2032,7 +2044,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-121" id="533" value="533" required>
+                     <input class="custom-control-input" type="radio" name="p121" id="533" value="533" required>
                      <label class="custom-control-label" for="533">
                         Algunas veces
                      </label>
@@ -2040,7 +2052,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-121" id="534" value="534" required>
+                     <input class="custom-control-input" type="radio" name="p121" id="534" value="534" required>
                      <label class="custom-control-label" for="534">
                         Casi nunca
                      </label>
@@ -2048,7 +2060,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-121" id="535" value="535" required>
+                     <input class="custom-control-input" type="radio" name="p121" id="535" value="535" required>
                      <label class="custom-control-label" for="535">
                         Nunca
                      </label>
@@ -2066,7 +2078,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc25-122" id="536" value="536" required>
+                     <input class="custom-control-input" type="radio" name="p122" id="536" value="536" required>
                      <label class="custom-control-label " for="536">
                         Siempre
                      </label>
@@ -2074,7 +2086,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-122" id="537" value="537" required>
+                     <input class="custom-control-input" type="radio" name="p122" id="537" value="537" required>
                      <label class="custom-control-label" for="537">
                         Casi Siempre
                      </label>
@@ -2082,7 +2094,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-122" id="538" value="538" required>
+                     <input class="custom-control-input" type="radio" name="p122" id="538" value="538" required>
                      <label class="custom-control-label" for="538">
                         Algunas veces
                      </label>
@@ -2090,7 +2102,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-122" id="539" value="539" required>
+                     <input class="custom-control-input" type="radio" name="p122" id="539" value="539" required>
                      <label class="custom-control-label" for="539">
                         Casi nunca
                      </label>
@@ -2098,7 +2110,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-122" id="540" value="540" required>
+                     <input class="custom-control-input" type="radio" name="p122" id="540" value="540" required>
                      <label class="custom-control-label" for="540">
                         Nunca
                      </label>
@@ -2116,7 +2128,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc25-123" id="541" value="541" required>
+                     <input class="custom-control-input" type="radio" name="p123" id="541" value="541" required>
                      <label class="custom-control-label " for="541">
                         Siempre
                      </label>
@@ -2124,7 +2136,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-123" id="542" value="542" required>
+                     <input class="custom-control-input" type="radio" name="p123" id="542" value="542" required>
                      <label class="custom-control-label" for="542">
                         Casi Siempre
                      </label>
@@ -2132,7 +2144,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-123" id="543" value="543" required>
+                     <input class="custom-control-input" type="radio" name="p123" id="543" value="543" required>
                      <label class="custom-control-label" for="543">
                         Algunas veces
                      </label>
@@ -2140,7 +2152,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-123" id="544" value="544" required>
+                     <input class="custom-control-input" type="radio" name="p123" id="544" value="544" required>
                      <label class="custom-control-label" for="544">
                         Casi nunca
                      </label>
@@ -2148,7 +2160,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc25-123" id="545" value="545" required>
+                     <input class="custom-control-input" type="radio" name="p123" id="545" value="545" required>
                      <label class="custom-control-label" for="545">
                         Nunca
                      </label>
@@ -2159,12 +2171,12 @@
             
          </fieldset>
 
-         <!-- SUB-TITULO 26 -->
+         <!-- SUBCATEGORIA 24 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes se refieren a las relaciones con sus compañeros.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 26 -->
+         <!-- PREGUNTAS SUBCATEGORIA 24 | PREGUNTA 124-128  -->
          <fieldset class="form-group">
             <!-- |124| PREGUNTA -->
             <div class="row">                                 
@@ -2177,7 +2189,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc26-124" id="546" value="546" required>
+                     <input class="custom-control-input" type="radio" name="p124" id="546" value="546" required>
                      <label class="custom-control-label " for="546">
                         Siempre
                      </label>
@@ -2185,7 +2197,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-124" id="547" value="547" required>
+                     <input class="custom-control-input" type="radio" name="p124" id="547" value="547" required>
                      <label class="custom-control-label" for="547">
                         Casi Siempre
                      </label>
@@ -2193,7 +2205,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-124" id="548" value="548" required>
+                     <input class="custom-control-input" type="radio" name="p124" id="548" value="548" required>
                      <label class="custom-control-label" for="548">
                         Algunas veces
                      </label>
@@ -2201,7 +2213,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-124" id="549" value="549" required>
+                     <input class="custom-control-input" type="radio" name="p124" id="549" value="549" required>
                      <label class="custom-control-label" for="549">
                         Casi nunca
                      </label>
@@ -2209,7 +2221,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-124" id="550" value="550" required>
+                     <input class="custom-control-input" type="radio" name="p124" id="550" value="550" required>
                      <label class="custom-control-label" for="550">
                         Nunca
                      </label>
@@ -2227,7 +2239,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc26-125" id="551" value="551" required>
+                     <input class="custom-control-input" type="radio" name="p125" id="551" value="551" required>
                      <label class="custom-control-label " for="551">
                         Siempre
                      </label>
@@ -2235,7 +2247,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-125" id="552" value="552" required>
+                     <input class="custom-control-input" type="radio" name="p125" id="552" value="552" required>
                      <label class="custom-control-label" for="552">
                         Casi Siempre
                      </label>
@@ -2243,7 +2255,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-125" id="553" value="553" required>
+                     <input class="custom-control-input" type="radio" name="p125" id="553" value="553" required>
                      <label class="custom-control-label" for="553">
                         Algunas veces
                      </label>
@@ -2251,7 +2263,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-125" id="554" value="554" required>
+                     <input class="custom-control-input" type="radio" name="p125" id="554" value="554" required>
                      <label class="custom-control-label" for="554">
                         Casi nunca
                      </label>
@@ -2259,7 +2271,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-125" id="555" value="555" required>
+                     <input class="custom-control-input" type="radio" name="p125" id="555" value="555" required>
                      <label class="custom-control-label" for="555">
                         Nunca
                      </label>
@@ -2277,7 +2289,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc26-126" id="556" value="556" required>
+                     <input class="custom-control-input" type="radio" name="p126" id="556" value="556" required>
                      <label class="custom-control-label " for="556">
                         Siempre
                      </label>
@@ -2285,7 +2297,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-126" id="557" value="557" required>
+                     <input class="custom-control-input" type="radio" name="p126" id="557" value="557" required>
                      <label class="custom-control-label" for="557">
                         Casi Siempre
                      </label>
@@ -2293,7 +2305,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-126" id="558" value="558" required>
+                     <input class="custom-control-input" type="radio" name="p126" id="558" value="558" required>
                      <label class="custom-control-label" for="558">
                         Algunas veces
                      </label>
@@ -2301,7 +2313,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-126" id="559" value="559" required>
+                     <input class="custom-control-input" type="radio" name="p126" id="559" value="559" required>
                      <label class="custom-control-label" for="559">
                         Casi nunca
                      </label>
@@ -2309,7 +2321,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-126" id="560" value="560" required>
+                     <input class="custom-control-input" type="radio" name="p126" id="560" value="560" required>
                      <label class="custom-control-label" for="560">
                         Nunca
                      </label>
@@ -2327,7 +2339,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc26-127" id="561" value="561" required>
+                     <input class="custom-control-input" type="radio" name="p127" id="561" value="561" required>
                      <label class="custom-control-label " for="561">
                         Siempre
                      </label>
@@ -2335,7 +2347,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-127" id="562" value="562" required>
+                     <input class="custom-control-input" type="radio" name="p127" id="562" value="562" required>
                      <label class="custom-control-label" for="562">
                         Casi Siempre
                      </label>
@@ -2343,7 +2355,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-127" id="563" value="563" required>
+                     <input class="custom-control-input" type="radio" name="p127" id="563" value="563" required>
                      <label class="custom-control-label" for="563">
                         Algunas veces
                      </label>
@@ -2351,7 +2363,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-127" id="564" value="564" required>
+                     <input class="custom-control-input" type="radio" name="p127" id="564" value="564" required>
                      <label class="custom-control-label" for="564">
                         Casi nunca
                      </label>
@@ -2359,7 +2371,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-127" id="565" value="565" required>
+                     <input class="custom-control-input" type="radio" name="p127" id="565" value="565" required>
                      <label class="custom-control-label" for="565">
                         Nunca
                      </label>
@@ -2377,7 +2389,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc26-128" id="566" value="566" required>
+                     <input class="custom-control-input" type="radio" name="p128" id="566" value="566" required>
                      <label class="custom-control-label " for="566">
                         Siempre
                      </label>
@@ -2385,7 +2397,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-128" id="567" value="567" required>
+                     <input class="custom-control-input" type="radio" name="p128" id="567" value="567" required>
                      <label class="custom-control-label" for="567">
                         Casi Siempre
                      </label>
@@ -2393,7 +2405,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-128" id="568" value="568" required>
+                     <input class="custom-control-input" type="radio" name="p128" id="568" value="568" required>
                      <label class="custom-control-label" for="568">
                         Algunas veces
                      </label>
@@ -2401,7 +2413,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-128" id="569" value="569" required>
+                     <input class="custom-control-input" type="radio" name="p128" id="569" value="569" required>
                      <label class="custom-control-label" for="569">
                         Casi nunca
                      </label>
@@ -2409,7 +2421,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc26-128" id="570" value="570" required>
+                     <input class="custom-control-input" type="radio" name="p128" id="570" value="570" required>
                      <label class="custom-control-label" for="570">
                         Nunca
                      </label>
@@ -2420,12 +2432,12 @@
             
          </fieldset>
 
-         <!-- SUB-TITULO 27 -->
+         <!-- SUBCATEGORIA 25 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con la información que recibe sobre su rendimiento en el trabajo, el reconocimiento, el sentido de pertenencia y la estabilidad que le ofrece su trabajo.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 27 -->
+         <!-- PREGUNTAS SUBCATEGORIA 25 | PREGUNTA 129-138  -->
          <fieldset class="form-group">
             <!-- |129| PREGUNTA -->
             <div class="row">                                 
@@ -2434,11 +2446,11 @@
                   47.- Me informan sobre lo que hago bien en mi trabajo
                   </legend>
                </div>
-            </div>   <!-- Cierre ROW pregunta 129 -->
+            </div>   <!-- Cierre ROW pregunta 129-138 -->
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-129" id="571" value="571" required>
+                     <input class="custom-control-input" type="radio" name="p129" id="571" value="571" required>
                      <label class="custom-control-label " for="571">
                         Siempre
                      </label>
@@ -2446,7 +2458,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-129" id="572" value="572" required>
+                     <input class="custom-control-input" type="radio" name="p129" id="572" value="572" required>
                      <label class="custom-control-label" for="572">
                         Casi Siempre
                      </label>
@@ -2454,7 +2466,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-129" id="573" value="573" required>
+                     <input class="custom-control-input" type="radio" name="p129" id="573" value="573" required>
                      <label class="custom-control-label" for="573">
                         Algunas veces
                      </label>
@@ -2462,7 +2474,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-129" id="574" value="574" required>
+                     <input class="custom-control-input" type="radio" name="p129" id="574" value="574" required>
                      <label class="custom-control-label" for="574">
                         Casi nunca
                      </label>
@@ -2470,7 +2482,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-129" id="575" value="575" required>
+                     <input class="custom-control-input" type="radio" name="p129" id="575" value="575" required>
                      <label class="custom-control-label" for="575">
                         Nunca
                      </label>
@@ -2488,7 +2500,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-130" id="576" value="576" required>
+                     <input class="custom-control-input" type="radio" name="p130" id="576" value="576" required>
                      <label class="custom-control-label " for="576">
                         Siempre
                      </label>
@@ -2496,7 +2508,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-130" id="577" value="577" required>
+                     <input class="custom-control-input" type="radio" name="p130" id="577" value="577" required>
                      <label class="custom-control-label" for="577">
                         Casi Siempre
                      </label>
@@ -2504,7 +2516,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-130" id="578" value="578" required>
+                     <input class="custom-control-input" type="radio" name="p130" id="578" value="578" required>
                      <label class="custom-control-label" for="578">
                         Algunas veces
                      </label>
@@ -2512,7 +2524,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-130" id="579" value="579" required>
+                     <input class="custom-control-input" type="radio" name="p130" id="579" value="579" required>
                      <label class="custom-control-label" for="579">
                         Casi nunca
                      </label>
@@ -2520,7 +2532,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-130" id="580" value="580" required>
+                     <input class="custom-control-input" type="radio" name="p130" id="580" value="580" required>
                      <label class="custom-control-label" for="580">
                         Nunca
                      </label>
@@ -2538,7 +2550,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-131" id="581" value="581" required>
+                     <input class="custom-control-input" type="radio" name="p131" id="581" value="581" required>
                      <label class="custom-control-label " for="581">
                         Siempre
                      </label>
@@ -2546,7 +2558,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-131" id="582" value="582" required>
+                     <input class="custom-control-input" type="radio" name="p131" id="582" value="582" required>
                      <label class="custom-control-label" for="582">
                         Casi Siempre
                      </label>
@@ -2554,7 +2566,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-131" id="583" value="583" required>
+                     <input class="custom-control-input" type="radio" name="p131" id="583" value="583" required>
                      <label class="custom-control-label" for="583">
                         Algunas veces
                      </label>
@@ -2562,7 +2574,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-131" id="584" value="584" required>
+                     <input class="custom-control-input" type="radio" name="p131" id="584" value="584" required>
                      <label class="custom-control-label" for="584">
                         Casi nunca
                      </label>
@@ -2570,7 +2582,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-131" id="585" value="585" required>
+                     <input class="custom-control-input" type="radio" name="p131" id="585" value="585" required>
                      <label class="custom-control-label" for="585">
                         Nunca
                      </label>
@@ -2588,7 +2600,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-132" id="586" value="586" required>
+                     <input class="custom-control-input" type="radio" name="p132" id="586" value="586" required>
                      <label class="custom-control-label " for="586">
                         Siempre
                      </label>
@@ -2596,7 +2608,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-132" id="587" value="587" required>
+                     <input class="custom-control-input" type="radio" name="p132" id="587" value="587" required>
                      <label class="custom-control-label" for="587">
                         Casi Siempre
                      </label>
@@ -2604,7 +2616,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-132" id="588" value="588" required>
+                     <input class="custom-control-input" type="radio" name="p132" id="588" value="588" required>
                      <label class="custom-control-label" for="588">
                         Algunas veces
                      </label>
@@ -2612,7 +2624,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-132" id="589" value="589" required>
+                     <input class="custom-control-input" type="radio" name="p132" id="589" value="589" required>
                      <label class="custom-control-label" for="589">
                         Casi nunca
                      </label>
@@ -2620,7 +2632,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-132" id="590" value="590" required>
+                     <input class="custom-control-input" type="radio" name="p132" id="590" value="590" required>
                      <label class="custom-control-label" for="590">
                         Nunca
                      </label>
@@ -2638,7 +2650,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-133" id="591" value="591" required>
+                     <input class="custom-control-input" type="radio" name="p133" id="591" value="591" required>
                      <label class="custom-control-label " for="591">
                         Siempre
                      </label>
@@ -2646,7 +2658,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-133" id="592" value="592" required>
+                     <input class="custom-control-input" type="radio" name="p133" id="592" value="592" required>
                      <label class="custom-control-label" for="592">
                         Casi Siempre
                      </label>
@@ -2654,7 +2666,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-133" id="593" value="593" required>
+                     <input class="custom-control-input" type="radio" name="p133" id="593" value="593" required>
                      <label class="custom-control-label" for="593">
                         Algunas veces
                      </label>
@@ -2662,7 +2674,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-133" id="594" value="594" required>
+                     <input class="custom-control-input" type="radio" name="p133" id="594" value="594" required>
                      <label class="custom-control-label" for="594">
                         Casi nunca
                      </label>
@@ -2670,7 +2682,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-133" id="595" value="595" required>
+                     <input class="custom-control-input" type="radio" name="p133" id="595" value="595" required>
                      <label class="custom-control-label" for="595">
                         Nunca
                      </label>
@@ -2688,7 +2700,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-134" id="596" value="596" required>
+                     <input class="custom-control-input" type="radio" name="p134" id="596" value="596" required>
                      <label class="custom-control-label " for="596">
                         Siempre
                      </label>
@@ -2696,7 +2708,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-134" id="597" value="597" required>
+                     <input class="custom-control-input" type="radio" name="p134" id="597" value="597" required>
                      <label class="custom-control-label" for="597">
                         Casi Siempre
                      </label>
@@ -2704,7 +2716,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-134" id="598" value="598" required>
+                     <input class="custom-control-input" type="radio" name="p134" id="598" value="598" required>
                      <label class="custom-control-label" for="598">
                         Algunas veces
                      </label>
@@ -2712,7 +2724,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-134" id="599" value="599" required>
+                     <input class="custom-control-input" type="radio" name="p134" id="599" value="599" required>
                      <label class="custom-control-label" for="599">
                         Casi nunca
                      </label>
@@ -2720,7 +2732,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-134" id="600" value="600" required>
+                     <input class="custom-control-input" type="radio" name="p134" id="600" value="600" required>
                      <label class="custom-control-label" for="600">
                         Nunca
                      </label>
@@ -2738,7 +2750,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-135" id="601" value="601" required>
+                     <input class="custom-control-input" type="radio" name="p135" id="601" value="601" required>
                      <label class="custom-control-label " for="601">
                         Siempre
                      </label>
@@ -2746,7 +2758,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-135" id="602" value="602" required>
+                     <input class="custom-control-input" type="radio" name="p135" id="602" value="602" required>
                      <label class="custom-control-label" for="602">
                         Casi Siempre
                      </label>
@@ -2754,7 +2766,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-135" id="603" value="603" required>
+                     <input class="custom-control-input" type="radio" name="p135" id="603" value="603" required>
                      <label class="custom-control-label" for="603">
                         Algunas veces
                      </label>
@@ -2762,7 +2774,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-135" id="604" value="604" required>
+                     <input class="custom-control-input" type="radio" name="p135" id="604" value="604" required>
                      <label class="custom-control-label" for="604">
                         Casi nunca
                      </label>
@@ -2770,7 +2782,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-135" id="605" value="605" required>
+                     <input class="custom-control-input" type="radio" name="p135" id="605" value="605" required>
                      <label class="custom-control-label" for="605">
                         Nunca
                      </label>
@@ -2788,7 +2800,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-136" id="606" value="606" required>
+                     <input class="custom-control-input" type="radio" name="p136" id="606" value="606" required>
                      <label class="custom-control-label " for="606">
                         Siempre
                      </label>
@@ -2796,7 +2808,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-136" id="607" value="607" required>
+                     <input class="custom-control-input" type="radio" name="p136" id="607" value="607" required>
                      <label class="custom-control-label" for="607">
                         Casi Siempre
                      </label>
@@ -2804,7 +2816,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-136" id="608" value="608" required>
+                     <input class="custom-control-input" type="radio" name="p136" id="608" value="608" required>
                      <label class="custom-control-label" for="608">
                         Algunas veces
                      </label>
@@ -2812,7 +2824,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-136" id="609" value="609" required>
+                     <input class="custom-control-input" type="radio" name="p136" id="609" value="609" required>
                      <label class="custom-control-label" for="609">
                         Casi nunca
                      </label>
@@ -2820,7 +2832,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-136" id="610" value="610" required>
+                     <input class="custom-control-input" type="radio" name="p136" id="610" value="610" required>
                      <label class="custom-control-label" for="610">
                         Nunca
                      </label>
@@ -2838,7 +2850,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-137" id="611" value="611" required>
+                     <input class="custom-control-input" type="radio" name="p137" id="611" value="611" required>
                      <label class="custom-control-label " for="611">
                         Siempre
                      </label>
@@ -2846,7 +2858,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-137" id="612" value="612" required>
+                     <input class="custom-control-input" type="radio" name="p137" id="612" value="612" required>
                      <label class="custom-control-label" for="612">
                         Casi Siempre
                      </label>
@@ -2854,7 +2866,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-137" id="613" value="613" required>
+                     <input class="custom-control-input" type="radio" name="p137" id="613" value="613" required>
                      <label class="custom-control-label" for="613">
                         Algunas veces
                      </label>
@@ -2862,7 +2874,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-137" id="614" value="614" required>
+                     <input class="custom-control-input" type="radio" name="p137" id="614" value="614" required>
                      <label class="custom-control-label" for="614">
                         Casi nunca
                      </label>
@@ -2870,7 +2882,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-137" id="615" value="615" required>
+                     <input class="custom-control-input" type="radio" name="p137" id="615" value="615" required>
                      <label class="custom-control-label" for="615">
                         Nunca
                      </label>
@@ -2888,7 +2900,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc27-138" id="616" value="616" required>
+                     <input class="custom-control-input" type="radio" name="p138" id="616" value="616" required>
                      <label class="custom-control-label " for="616">
                         Siempre
                      </label>
@@ -2896,7 +2908,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-138" id="617" value="617" required>
+                     <input class="custom-control-input" type="radio" name="p138" id="617" value="617" required>
                      <label class="custom-control-label" for="617">
                         Casi Siempre
                      </label>
@@ -2904,7 +2916,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-138" id="618" value="618" required>
+                     <input class="custom-control-input" type="radio" name="p138" id="618" value="618" required>
                      <label class="custom-control-label" for="618">
                         Algunas veces
                      </label>
@@ -2912,7 +2924,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-138" id="619" value="619" required>
+                     <input class="custom-control-input" type="radio" name="p138" id="619" value="619" required>
                      <label class="custom-control-label" for="619">
                         Casi nunca
                      </label>
@@ -2920,7 +2932,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc27-138" id="620" value="620" required>
+                     <input class="custom-control-input" type="radio" name="p138" id="620" value="620" required>
                      <label class="custom-control-label" for="620">
                         Nunca
                      </label>
@@ -2931,12 +2943,12 @@
             
          </fieldset>
 
-         <!-- SUB-TITULO 28 -->
+         <!-- SUBCATEGORIA 26 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con los actos de violencia laboral (malos tratos, acosos, hostigamientos, acoso psicológico).</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 28 -->
+         <!-- PREGUNTAS SUBCATEGORIA 26 | PREGUNTA 139-146 -->
          <fieldset class="form-group">
             <!-- |139| PREGUNTA -->
             <div class="row">                                 
@@ -2949,7 +2961,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-139" id="621" value="621" required>
+                     <input class="custom-control-input" type="radio" name="p139" id="621" value="621" required>
                      <label class="custom-control-label " for="621">
                         Siempre
                      </label>
@@ -2957,7 +2969,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-139" id="622" value="622" required>
+                     <input class="custom-control-input" type="radio" name="p139" id="622" value="622" required>
                      <label class="custom-control-label" for="622">
                         Casi Siempre
                      </label>
@@ -2965,7 +2977,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-139" id="623" value="623" required>
+                     <input class="custom-control-input" type="radio" name="p139" id="623" value="623" required>
                      <label class="custom-control-label" for="623">
                         Algunas veces
                      </label>
@@ -2973,7 +2985,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-139" id="624" value="624" required>
+                     <input class="custom-control-input" type="radio" name="p139" id="624" value="624" required>
                      <label class="custom-control-label" for="624">
                         Casi nunca
                      </label>
@@ -2981,7 +2993,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-139" id="625" value="625" required>
+                     <input class="custom-control-input" type="radio" name="p139" id="625" value="625" required>
                      <label class="custom-control-label" for="625">
                         Nunca
                      </label>
@@ -2999,7 +3011,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-140" id="626" value="626" required>
+                     <input class="custom-control-input" type="radio" name="p140" id="626" value="626" required>
                      <label class="custom-control-label " for="626">
                         Siempre
                      </label>
@@ -3007,7 +3019,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-140" id="627" value="627" required>
+                     <input class="custom-control-input" type="radio" name="p140" id="627" value="627" required>
                      <label class="custom-control-label" for="627">
                         Casi Siempre
                      </label>
@@ -3015,7 +3027,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-140" id="628" value="628" required>
+                     <input class="custom-control-input" type="radio" name="p140" id="628" value="628" required>
                      <label class="custom-control-label" for="628">
                         Algunas veces
                      </label>
@@ -3023,7 +3035,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-140" id="629" value="629" required>
+                     <input class="custom-control-input" type="radio" name="p140" id="629" value="629" required>
                      <label class="custom-control-label" for="629">
                         Casi nunca
                      </label>
@@ -3031,7 +3043,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-140" id="630" value="630" required>
+                     <input class="custom-control-input" type="radio" name="p140" id="630" value="630" required>
                      <label class="custom-control-label" for="630">
                         Nunca
                      </label>
@@ -3049,7 +3061,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-141" id="631" value="631" required>
+                     <input class="custom-control-input" type="radio" name="p141" id="631" value="631" required>
                      <label class="custom-control-label " for="631">
                         Siempre
                      </label>
@@ -3057,7 +3069,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-141" id="632" value="632" required>
+                     <input class="custom-control-input" type="radio" name="p141" id="632" value="632" required>
                      <label class="custom-control-label" for="632">
                         Casi Siempre
                      </label>
@@ -3065,7 +3077,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-141" id="633" value="633" required>
+                     <input class="custom-control-input" type="radio" name="p141" id="633" value="633" required>
                      <label class="custom-control-label" for="633">
                         Algunas veces
                      </label>
@@ -3073,7 +3085,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-141" id="634" value="634" required>
+                     <input class="custom-control-input" type="radio" name="p141" id="634" value="634" required>
                      <label class="custom-control-label" for="634">
                         Casi nunca
                      </label>
@@ -3081,7 +3093,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-141" id="635" value="635" required>
+                     <input class="custom-control-input" type="radio" name="p141" id="635" value="635" required>
                      <label class="custom-control-label" for="635">
                         Nunca
                      </label>
@@ -3099,7 +3111,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-142" id="636" value="636" required>
+                     <input class="custom-control-input" type="radio" name="p142" id="636" value="636" required>
                      <label class="custom-control-label " for="636">
                         Siempre
                      </label>
@@ -3107,7 +3119,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-142" id="637" value="637" required>
+                     <input class="custom-control-input" type="radio" name="p142" id="637" value="637" required>
                      <label class="custom-control-label" for="637">
                         Casi Siempre
                      </label>
@@ -3115,7 +3127,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-142" id="638" value="638" required>
+                     <input class="custom-control-input" type="radio" name="p142" id="638" value="638" required>
                      <label class="custom-control-label" for="638">
                         Algunas veces
                      </label>
@@ -3123,7 +3135,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-142" id="639" value="639" required>
+                     <input class="custom-control-input" type="radio" name="p142" id="639" value="639" required>
                      <label class="custom-control-label" for="639">
                         Casi nunca
                      </label>
@@ -3131,7 +3143,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-142" id="640" value="640" required>
+                     <input class="custom-control-input" type="radio" name="p142" id="640" value="640" required>
                      <label class="custom-control-label" for="640">
                         Nunca
                      </label>
@@ -3149,7 +3161,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-143" id="641" value="641" required>
+                     <input class="custom-control-input" type="radio" name="p143" id="641" value="641" required>
                      <label class="custom-control-label " for="641">
                         Siempre
                      </label>
@@ -3157,7 +3169,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-143" id="642" value="642" required>
+                     <input class="custom-control-input" type="radio" name="p143" id="642" value="642" required>
                      <label class="custom-control-label" for="642">
                         Casi Siempre
                      </label>
@@ -3165,7 +3177,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-143" id="643" value="643" required>
+                     <input class="custom-control-input" type="radio" name="p143" id="643" value="643" required>
                      <label class="custom-control-label" for="643">
                         Algunas veces
                      </label>
@@ -3173,7 +3185,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-143" id="644" value="644" required>
+                     <input class="custom-control-input" type="radio" name="p143" id="644" value="644" required>
                      <label class="custom-control-label" for="644">
                         Casi nunca
                      </label>
@@ -3181,7 +3193,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-143" id="645" value="645" required>
+                     <input class="custom-control-input" type="radio" name="p143" id="645" value="645" required>
                      <label class="custom-control-label" for="645">
                         Nunca
                      </label>
@@ -3199,7 +3211,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-144" id="646" value="646" required>
+                     <input class="custom-control-input" type="radio" name="p144" id="646" value="646" required>
                      <label class="custom-control-label " for="646">
                         Siempre
                      </label>
@@ -3207,7 +3219,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-144" id="647" value="647" required>
+                     <input class="custom-control-input" type="radio" name="p144" id="647" value="647" required>
                      <label class="custom-control-label" for="647">
                         Casi Siempre
                      </label>
@@ -3215,7 +3227,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-144" id="648" value="648" required>
+                     <input class="custom-control-input" type="radio" name="p144" id="648" value="648" required>
                      <label class="custom-control-label" for="648">
                         Algunas veces
                      </label>
@@ -3223,7 +3235,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-144" id="649" value="649" required>
+                     <input class="custom-control-input" type="radio" name="p144" id="649" value="649" required>
                      <label class="custom-control-label" for="649">
                         Casi nunca
                      </label>
@@ -3231,7 +3243,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-144" id="650" value="650" required>
+                     <input class="custom-control-input" type="radio" name="p144" id="650" value="650" required>
                      <label class="custom-control-label" for="650">
                         Nunca
                      </label>
@@ -3249,7 +3261,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-145" id="651" value="651" required>
+                     <input class="custom-control-input" type="radio" name="p145" id="651" value="651" required>
                      <label class="custom-control-label " for="651">
                         Siempre
                      </label>
@@ -3257,7 +3269,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-145" id="652" value="652" required>
+                     <input class="custom-control-input" type="radio" name="p145" id="652" value="652" required>
                      <label class="custom-control-label" for="652">
                         Casi Siempre
                      </label>
@@ -3265,7 +3277,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-145" id="653" value="653" required>
+                     <input class="custom-control-input" type="radio" name="p145" id="653" value="653" required>
                      <label class="custom-control-label" for="653">
                         Algunas veces
                      </label>
@@ -3273,7 +3285,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-145" id="654" value="654" required>
+                     <input class="custom-control-input" type="radio" name="p145" id="654" value="654" required>
                      <label class="custom-control-label" for="654">
                         Casi nunca
                      </label>
@@ -3281,7 +3293,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-145" id="655" value="655" required>
+                     <input class="custom-control-input" type="radio" name="p145" id="655" value="655" required>
                      <label class="custom-control-label" for="655">
                         Nunca
                      </label>
@@ -3299,7 +3311,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc28-146" id="656" value="656" required>
+                     <input class="custom-control-input" type="radio" name="p146" id="656" value="656" required>
                      <label class="custom-control-label " for="656">
                         Siempre
                      </label>
@@ -3307,7 +3319,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-146" id="657" value="657" required>
+                     <input class="custom-control-input" type="radio" name="p146" id="657" value="657" required>
                      <label class="custom-control-label" for="657">
                         Casi Siempre
                      </label>
@@ -3315,7 +3327,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-146" id="658" value="658" required>
+                     <input class="custom-control-input" type="radio" name="p146" id="658" value="658" required>
                      <label class="custom-control-label" for="658">
                         Algunas veces
                      </label>
@@ -3323,7 +3335,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-146" id="659" value="659" required>
+                     <input class="custom-control-input" type="radio" name="p146" id="659" value="659" required>
                      <label class="custom-control-label" for="659">
                         Casi nunca
                      </label>
@@ -3331,7 +3343,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc28-146" id="660" value="660" required>
+                     <input class="custom-control-input" type="radio" name="p146" id="660" value="660" required>
                      <label class="custom-control-label" for="660">
                         Nunca
                      </label>
@@ -3342,12 +3354,12 @@
             
          </fieldset>
 
-         <!-- SUB-TITULO 29 -->
+         <!-- SUBCATEGORIA 27 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las preguntas siguientes están relacionadas con la atención a clientes y usuarios.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 29 -->
+         <!-- PREGUNTAS SUBCATEGORIA 27  PREGUNATA SI/NO-->
          <fieldset class="form-group">
             <!-- |147| PREGUNTA -->
             <div class="row">                                 
@@ -3358,7 +3370,7 @@
                </div>   
                <div class="col-sm-1 ">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc29-147" id="661" value="661"  require>
+                     <input class="custom-control-input" type="radio" name="p147" id="661" value="661"  require>
                      <label class="custom-control-label " for="661">
                         Si
                      </label> 
@@ -3366,7 +3378,7 @@
                </div>
                <div class="col-sm-1 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc29-147" id="662" value="662"  require>
+                     <input class="custom-control-input" type="radio" name="p147" id="662" value="662"  require>
                      <label class="custom-control-label" for="662">
                         No
                      </label>
@@ -3375,9 +3387,8 @@
             </div>                            
          </fieldset>    
 
-         <!-- SE MUESTRAN SI SELECCIONA SI EN LA PREGUNTA SUBCATEGORIA 29 -->
-         <!-- PREGUNTAS SUBCATEGORIA-30 -->
-         <!-- hiden-subcategory-30 subcategory30 -->
+         <!-- SE MUESTRAN SI SELECCIONA SI  -->
+         <!-- PREGUNTAS SUBCATEGORIA-27 PREGUNTAS 148-151-->         
          <fieldset class="form-group hiden-subcategory subcategory30">
             <!-- |148| PREGUNTA -->
             <div class="row">                                 
@@ -3390,7 +3401,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc30-148" id="663" value="663">
+                     <input class="custom-control-input" type="radio" name="p148" id="663" value="663">
                      <label class="custom-control-label " for="663">
                         Siempre
                      </label>
@@ -3398,7 +3409,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-148" id="664" value="664">
+                     <input class="custom-control-input" type="radio" name="p148" id="664" value="664">
                      <label class="custom-control-label" for="664">
                         Casi Siempre
                      </label>
@@ -3406,7 +3417,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-148" id="665" value="665">
+                     <input class="custom-control-input" type="radio" name="p148" id="665" value="665">
                      <label class="custom-control-label" for="665">
                         Algunas veces
                      </label>
@@ -3414,7 +3425,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-148" id="666" value="666">
+                     <input class="custom-control-input" type="radio" name="p148" id="666" value="666">
                      <label class="custom-control-label" for="666">
                         Casi nunca
                      </label>
@@ -3422,7 +3433,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-148" id="667" value="667">
+                     <input class="custom-control-input" type="radio" name="p148" id="667" value="667">
                      <label class="custom-control-label" for="667">
                         Nunca
                      </label>
@@ -3440,7 +3451,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc30-149" id="668" value="668">
+                     <input class="custom-control-input" type="radio" name="p149" id="668" value="668">
                      <label class="custom-control-label " for="668">
                         Siempre
                      </label>
@@ -3448,7 +3459,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-149" id="669" value="669">
+                     <input class="custom-control-input" type="radio" name="p149" id="669" value="669">
                      <label class="custom-control-label" for="669">
                         Casi Siempre
                      </label>
@@ -3456,7 +3467,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-149" id="670" value="670">
+                     <input class="custom-control-input" type="radio" name="p149" id="670" value="670">
                      <label class="custom-control-label" for="670">
                         Algunas veces
                      </label>
@@ -3464,7 +3475,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-149" id="671" value="671">
+                     <input class="custom-control-input" type="radio" name="p149" id="671" value="671">
                      <label class="custom-control-label" for="671">
                         Casi nunca
                      </label>
@@ -3472,7 +3483,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-149" id="672" value="672">
+                     <input class="custom-control-input" type="radio" name="p149" id="672" value="672">
                      <label class="custom-control-label" for="672">
                         Nunca
                      </label>
@@ -3490,7 +3501,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc30-150" id="673" value="673">
+                     <input class="custom-control-input" type="radio" name="p150" id="673" value="673">
                      <label class="custom-control-label " for="673">
                         Siempre
                      </label>
@@ -3498,7 +3509,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-150" id="674" value="674">
+                     <input class="custom-control-input" type="radio" name="p150" id="674" value="674">
                      <label class="custom-control-label" for="674">
                         Casi Siempre
                      </label>
@@ -3506,7 +3517,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-150" id="675" value="675">
+                     <input class="custom-control-input" type="radio" name="p150" id="675" value="675">
                      <label class="custom-control-label" for="675">
                         Algunas veces
                      </label>
@@ -3514,7 +3525,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-150" id="676" value="676">
+                     <input class="custom-control-input" type="radio" name="p150" id="676" value="676">
                      <label class="custom-control-label" for="676">
                         Casi nunca
                      </label>
@@ -3522,7 +3533,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-150" id="677" value="677">
+                     <input class="custom-control-input" type="radio" name="p150" id="677" value="677">
                      <label class="custom-control-label" for="677">
                         Nunca
                      </label>
@@ -3540,7 +3551,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc30-151" id="678" value="678">
+                     <input class="custom-control-input" type="radio" name="p151" id="678" value="678">
                      <label class="custom-control-label " for="678">
                         Siempre
                      </label>
@@ -3548,7 +3559,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-151" id="679" value="679">
+                     <input class="custom-control-input" type="radio" name="p151" id="679" value="679">
                      <label class="custom-control-label" for="679">
                         Casi Siempre
                      </label>
@@ -3556,7 +3567,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-151" id="680" value="680">
+                     <input class="custom-control-input" type="radio" name="p151" id="680" value="680">
                      <label class="custom-control-label" for="680">
                         Algunas veces
                      </label>
@@ -3564,7 +3575,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-151" id="681" value="681">
+                     <input class="custom-control-input" type="radio" name="p151" id="681" value="681">
                      <label class="custom-control-label" for="681">
                         Casi nunca
                      </label>
@@ -3572,7 +3583,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc30-151" id="682" value="682">
+                     <input class="custom-control-input" type="radio" name="p151" id="682" value="682">
                      <label class="custom-control-label" for="682">
                         Nunca
                      </label>
@@ -3581,12 +3592,12 @@
             </div> <!-- Cierre ROW respuestas pregunta 151 -->                          
          </fieldset>
 
-         <!-- SUBCATEGORIA-31 -->
+         <!-- SUBCATEGORIA-28 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las siguientes preguntas están relacionadas con las actitudes de los trabajadores que supervisa.</h5>
          </div>
 
-         <!-- PREGUNTAS SUB-TITULO 31 -->
+         <!-- PREGUNTAS SUBCATEGORIA 28  PREGUNATA SI/NO-->
          <fieldset class="form-group">
             <!-- |152| PREGUNTA -->
             <div class="row">                                 
@@ -3597,7 +3608,7 @@
                </div>   
                <div class="col-sm-1 ">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc31-152" id="683" value="683"  require>
+                     <input class="custom-control-input" type="radio" name="p152" id="683" value="683"  require>
                      <label class="custom-control-label " for="683">
                         Si
                      </label>
@@ -3605,7 +3616,7 @@
                </div>
                <div class="col-sm-1 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc31-152" id="684" value="684"  require>
+                     <input class="custom-control-input" type="radio" name="p152" id="684" value="684"  require>
                      <label class="custom-control-label" for="684">
                         No
                      </label>
@@ -3614,9 +3625,8 @@
             </div>                            
          </fieldset>
 
-         <!-- SE MUESTRAN SI SELECCIONA SI EN LA PREGUNTA SUBCATEGORIA 31 -->
-         <!-- PREGUNTAS SUBCATEGORIA-32 -->
-         <!-- hiden-subcategory-32 subcategory32 -->
+         <!-- SE MUESTRAN SI SELECCIONA SI  -->
+         <!-- PREGUNTAS SUBCATEGORIA-28 PREGUNTAS 153-156 --->    
          <fieldset class="form-group hiden-subcategory subcategory32">
             <!-- |153| PREGUNTA -->
             <div class="row">                                 
@@ -3629,7 +3639,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc32-153" id="685" value="685">
+                     <input class="custom-control-input" type="radio" name="p153" id="685" value="685">
                      <label class="custom-control-label " for="685">
                         Siempre
                      </label>
@@ -3637,7 +3647,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-153" id="686" value="686">
+                     <input class="custom-control-input" type="radio" name="p153" id="686" value="686">
                      <label class="custom-control-label" for="686">
                         Casi Siempre
                      </label>
@@ -3645,7 +3655,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-153" id="687" value="687">
+                     <input class="custom-control-input" type="radio" name="p153" id="687" value="687">
                      <label class="custom-control-label" for="687">
                         Algunas veces
                      </label>
@@ -3653,7 +3663,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-153" id="688" value="688">
+                     <input class="custom-control-input" type="radio" name="p153" id="688" value="688">
                      <label class="custom-control-label" for="688">
                         Casi nunca
                      </label>
@@ -3661,7 +3671,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-153" id="689" value="689">
+                     <input class="custom-control-input" type="radio" name="p153" id="689" value="689">
                      <label class="custom-control-label" for="689">
                         Nunca
                      </label>
@@ -3679,7 +3689,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc32-154" id="690" value="690">
+                     <input class="custom-control-input" type="radio" name="p154" id="690" value="690">
                      <label class="custom-control-label " for="690">
                         Siempre
                      </label>
@@ -3687,7 +3697,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-154" id="691" value="691">
+                     <input class="custom-control-input" type="radio" name="p154" id="691" value="691">
                      <label class="custom-control-label" for="691">
                         Casi Siempre
                      </label>
@@ -3695,7 +3705,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-154" id="692" value="692">
+                     <input class="custom-control-input" type="radio" name="p154" id="692" value="692">
                      <label class="custom-control-label" for="692">
                         Algunas veces
                      </label>
@@ -3703,7 +3713,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-154" id="693" value="693">
+                     <input class="custom-control-input" type="radio" name="p154" id="693" value="693">
                      <label class="custom-control-label" for="693">
                         Casi nunca
                      </label>
@@ -3711,7 +3721,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-154" id="694" value="694">
+                     <input class="custom-control-input" type="radio" name="p154" id="694" value="694">
                      <label class="custom-control-label" for="694">
                         Nunca
                      </label>
@@ -3729,7 +3739,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc32-155" id="695" value="695">
+                     <input class="custom-control-input" type="radio" name="p155" id="695" value="695">
                      <label class="custom-control-label " for="695">
                         Siempre
                      </label>
@@ -3737,7 +3747,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-155" id="696" value="696">
+                     <input class="custom-control-input" type="radio" name="p155" id="696" value="696">
                      <label class="custom-control-label" for="696">
                         Casi Siempre
                      </label>
@@ -3745,7 +3755,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-155" id="697" value="697">
+                     <input class="custom-control-input" type="radio" name="p155" id="697" value="697">
                      <label class="custom-control-label" for="697">
                         Algunas veces
                      </label>
@@ -3753,7 +3763,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-155" id="698" value="698">
+                     <input class="custom-control-input" type="radio" name="p155" id="698" value="698">
                      <label class="custom-control-label" for="698">
                         Casi nunca
                      </label>
@@ -3761,7 +3771,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-155" id="699" value="699">
+                     <input class="custom-control-input" type="radio" name="p155" id="699" value="699">
                      <label class="custom-control-label" for="699">
                         Nunca
                      </label>
@@ -3779,7 +3789,7 @@
             <div class="row"> 
                <div class="col-sm-2">
                   <div class="custom-control custom-radio ">
-                     <input class="custom-control-input" type="radio" name="sc32-156" id="700" value="700">
+                     <input class="custom-control-input" type="radio" name="p156" id="700" value="700">
                      <label class="custom-control-label " for="700">
                         Siempre
                      </label>
@@ -3787,7 +3797,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-156" id="701" value="701">
+                     <input class="custom-control-input" type="radio" name="p156" id="701" value="701">
                      <label class="custom-control-label" for="701">
                         Casi Siempre
                      </label>
@@ -3795,7 +3805,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-156" id="702" value="702">
+                     <input class="custom-control-input" type="radio" name="p156" id="702" value="702">
                      <label class="custom-control-label" for="702">
                         Algunas veces
                      </label>
@@ -3803,7 +3813,7 @@
                </div>
                <div class="col-sm-2">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-156" id="703" value="703">
+                     <input class="custom-control-input" type="radio" name="p156" id="703" value="703">
                      <label class="custom-control-label" for="703">
                         Casi nunca
                      </label>
@@ -3811,7 +3821,7 @@
                </div>
                <div class="col-sm-2 ">
                   <div class="custom-control custom-radio">
-                     <input class="custom-control-input" type="radio" name="sc32-156" id="704" value="704">
+                     <input class="custom-control-input" type="radio" name="p156" id="704" value="704">
                      <label class="custom-control-label" for="704">
                         Nunca
                      </label>
@@ -3824,10 +3834,9 @@
          <!-- BOTON GUARDAR CUESTIONARIO-->
          <div class="form-group row">
             <div class="col-sm-12">
-               <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar y Finalizar</button>
+               <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar Respuestas Cuestionario Fase 4</button>
             </div>
          </div>
-
 
       </form>
 

@@ -2087,7 +2087,7 @@
             <h5>Las preguntas siguientes están relacionadas con la atención a clientes y usuarios.</h5>
          </div>
 
-         <!-- PREGUNTAS SUBCATEGORIA-13 -->
+         <!-- PREGUNTA 75 - SUBCATEGORIA-13 SI/NO-->
          <fieldset class="form-group">
             <!-- |75| PREGUNTA -->
             <div class="row">                                 
@@ -2116,7 +2116,7 @@
          </fieldset>            
          
          <!-- SE MUESTRAN SI SELECCIONA SI EN LA PREGUNTA SUBCATEGORIA 13 -->
-         <!-- PREGUNTAS SUBCATEGORIA-14 - pregunta 76 - 78  -->
+         <!-- PREGUNTAS SUBCATEGORIA-13 - pregunta 76 - 78  -->
          <fieldset class="form-group hiden-subcategory subcategory14">
             <!-- |76| PREGUNTA -->
             <div class="row">                                 
@@ -2270,12 +2270,12 @@
             </div> <!-- Cierre ROW respuestas pregunta 78 -->                          
          </fieldset>
 
-         <!-- SUBCATEGORIA-15 -->
+         <!-- SUBCATEGORIA-14 -->
          <div class="alert alert-danger text-left" role="alert">
             <h5>Las siguientes preguntas están relacionadas con las actitudes de los trabajadores que supervisa.</h5>
          </div>
 
-         <!-- PREGUNTAS SUBCATEGORIA-15 -->
+         <!-- PREGUNTAS SUBCATEGORIA-14 SI/NO-->
          <fieldset class="form-group">
             <!-- |79| PREGUNTA -->
             <div class="row">                                 
@@ -2304,7 +2304,7 @@
          </fieldset>
 
          <!-- SE MUESTRAN SI SELECCIONA SI EN LA PREGUNTA SUBCATEGORIA 15 -->
-         <!-- PREGUNTAS SUBCATEGORIA-16 - pregunta 80 - 82 -->
+         <!-- PREGUNTAS SUBCATEGORIA-14 - pregunta 80 - 82 -->
          <fieldset class="form-group hiden-subcategory subcategory16">
             <!-- |80| PREGUNTA -->
             <div class="row">                                 

@@ -36,12 +36,41 @@
    // var_dump($fase4);
 
    // hacemos una consulta para traer las preguntas y respuestas de la fase 1
-   $sqlpreguntasrespuestas ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador";
+   // $sqlpreguntasrespuestas ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador";
 
-   $querypreguntasrespuestas = $pdo->prepare($sqlpreguntasrespuestas);
-   $querypreguntasrespuestas->execute([
+   // ------------- CONSULTA PREGUNTAS | RESPUESTA FASE 1 ------------------------------
+   $sqlpreguntasrespuestas_f1 ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador AND cuestionariosdetalle.fase=1";
+
+   $querypreguntasrespuestas_f1 = $pdo->prepare($sqlpreguntasrespuestas_f1);
+   $querypreguntasrespuestas_f1->execute([
       'idTrabajador' => $trabajadorId
    ]);
+
+   // ------------- CONSULTA PREGUNTAS | RESPUESTA FASE 2 ------------------------------
+   $sqlpreguntasrespuestas_f2 ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador AND cuestionariosdetalle.fase=2";
+
+   $querypreguntasrespuestas_f2 = $pdo->prepare($sqlpreguntasrespuestas_f2);
+   $querypreguntasrespuestas_f2->execute([
+      'idTrabajador' => $trabajadorId
+   ]);
+
+   // ------------- CONSULTA PREGUNTAS | RESPUESTA FASE 3 ------------------------------
+   $sqlpreguntasrespuestas_f3 ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador AND cuestionariosdetalle.fase=3";
+
+   $querypreguntasrespuestas_f3 = $pdo->prepare($sqlpreguntasrespuestas_f3);
+   $querypreguntasrespuestas_f3->execute([
+      'idTrabajador' => $trabajadorId
+   ]);
+
+   // ------------- CONSULTA PREGUNTAS | RESPUESTA FASE 4 ------------------------------
+   $sqlpreguntasrespuestas_f4 ="SELECT preguntas.id, preguntas.pregunta, respuestas.respuesta, cuestionario.id AS cuestionarioId, cuestionario.trabajadorId FROM preguntas, respuestas, cuestionario, cuestionariosdetalle WHERE cuestionario.id = cuestionariosdetalle.cuestionarioId AND preguntas.id = cuestionariosdetalle.preguntaId AND respuestas.id = cuestionariosdetalle.respuestaId AND cuestionario.trabajadorId =:idTrabajador AND cuestionariosdetalle.fase=4";
+
+   $querypreguntasrespuestas_f4 = $pdo->prepare($sqlpreguntasrespuestas_f4);
+   $querypreguntasrespuestas_f4->execute([
+      'idTrabajador' => $trabajadorId
+   ]);
+
+
 
    
    // hacemos una consulta para traer los registros de las preguntas abiertas
@@ -140,9 +169,7 @@
                         } else {
                            echo '<td class="text-center"><span class="badge badge-warning">Pendiente</span></td>';
                         }
-                     ?>                     
-                     
-                                        
+                     ?>                                                             
                   </tr>                 
                   <tr>                                                              
                      <td colspan="3"></td>
@@ -179,9 +206,11 @@
       </div>   
 
       <div class="row">
-         <div class="col-md-12">
-            <h2 class="mt-3 text-center">Preguntas / Respuestas Fase I</h2>
+
+         <div class="col-md-12 alert alert-danger text-left" role="alert">
+            <h3 class="mt-3 text-center">Preguntas / Respuestas Fase I</h3>
          </div>
+
       </div>
 
       <div class="row">
@@ -198,9 +227,10 @@
                </thead>
                <tbody>
                   
+                  <!-- codigo PHP para para imprimir las preguntas d ela fase 1 -->
                   <?php
                      $contadorPreguntas = 0; 
-                     while($row = $querypreguntasrespuestas->fetch(PDO::FETCH_ASSOC)) {
+                     while($row = $querypreguntasrespuestas_f1->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr>';
                         echo '<th scope="row">' . $row['id'] . '</th>';
                         echo '<td>' . $row['pregunta'] . '</td>';
@@ -291,10 +321,173 @@
       </div>
 
       <div class="row">
-         <div class="col-md-12">
+
+         <div class="col-md-12 alert alert-danger text-left" role="alert">
+            <h3 class="mt-3 text-center">Preguntas / Respuestas Fase II</h3>
+         </div>
+
+         <!-- <div class="col-md-12">
             <h2 class="mt-3 text-center">Preguntas / Respuestas Fase II</h2>
+         </div> -->
+      </div>
+
+      <div class="row">
+         <div class="col-md-12">
+
+            <table class="table">
+               <thead class="thead-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Pregunta</th>
+                     <th scope="col">Respuesta</th>                  
+                     <th scope="col"></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  
+                  <!-- codigo PHP para para imprimir las preguntas d ela fase 2 -->
+                  <?php
+                     $contadorPreguntas = 0; 
+                     while($row = $querypreguntasrespuestas_f2->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<th scope="row">' . $row['id'] . '</th>';
+                        echo '<td>' . $row['pregunta'] . '</td>';
+                        echo '<td>' . $row['respuesta'] . '</td>'; 
+                        echo '<td>-</td>';
+                        // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                        // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                        echo '</tr>';     
+                        
+                        // if($contadorPreguntas == 3){
+                        //    if($row['respuesta'] == 'Sin formación'){
+                        //       echo '<tr>';
+                        //       echo '<th scope="row">' . '5' . '</th>';
+                        //       echo '<td>' . 'Profesión/Puesto' . '</td>';
+                        //       echo '<td>' . $respuestaAbierta5 . '</td>'; 
+                        //       echo '<td>-</td>';
+                        //       // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                        //       // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                        //       echo '</tr>';
+
+                        //       echo '<tr>';
+                        //       echo '<th scope="row">' . '6' . '</th>';
+                        //       echo '<td>' . 'Departamento/Area' . '</td>';
+                        //       echo '<td>' . $respuestaAbierta6 . '</td>'; 
+                        //       echo '<td>-</td>';
+                        //       // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                        //       // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                        //       echo '</tr>';
+                        //    }
+                        // } 
+                        
+                        // echo $pregunta5 . '---' . $respuestaAbierta5;
+                        $contadorPreguntas++;
+                     }
+                  ?>
+                              
+               </tbody>
+            </table>
          </div>
       </div>
+
+
+      <div class="row">
+
+         <div class="col-md-12 alert alert-danger text-left" role="alert">
+            <h3 class="mt-3 text-center">Preguntas / Respuestas Fase III</h3>
+         </div>
+
+         <!-- <div class="col-md-12">
+            <h2 class="mt-3 text-center">Preguntas / Respuestas Fase III</h2>
+         </div> -->
+
+      </div>
+
+      <div class="row">
+         <div class="col-md-12">
+
+            <table class="table">
+               <thead class="thead-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Pregunta</th>
+                     <th scope="col">Respuesta</th>                  
+                     <th scope="col"></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  
+                  <!-- codigo PHP para para imprimir las preguntas d ela fase 3 -->
+                  <?php
+                     $contadorPreguntas = 0; 
+                     while($row = $querypreguntasrespuestas_f3->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<th scope="row">' . $row['id'] . '</th>';
+                        echo '<td>' . $row['pregunta'] . '</td>';
+                        echo '<td>' . $row['respuesta'] . '</td>'; 
+                        echo '<td>'. '-' .'</td>';
+                        // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                        // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                        echo '</tr>';                                                                             
+                        $contadorPreguntas++;
+                     }
+                  ?>
+                              
+               </tbody>
+            </table>
+         </div>
+      </div>
+
+
+      <div class="row">
+
+         <div class="col-md-12 alert alert-danger text-left" role="alert">
+            <h3 class="mt-3 text-center">Preguntas / Respuestas Fase IV</h3>
+         </div>
+
+         <!-- <div class="col-md-12">
+            <h2 class="mt-3 text-center">Preguntas / Respuestas Fase IV</h2>
+         </div> -->
+
+      </div>
+
+      <div class="row">
+         <div class="col-md-12">
+
+            <table class="table">
+               <thead class="thead-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Pregunta</th>
+                     <th scope="col">Respuesta</th>                  
+                     <th scope="col"></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  
+                  <!-- codigo PHP para para imprimir las preguntas d ela fase 3 -->
+                  <?php
+                     $contadorPreguntas = 0; 
+                     while($row = $querypreguntasrespuestas_f4->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<th scope="row">' . $row['id'] . '</th>';
+                        echo '<td>' . $row['pregunta'] . '</td>';
+                        echo '<td>' . $row['respuesta'] . '</td>'; 
+                        echo '<td>'. '-' .'</td>';
+                        // echo '<td><a href="trabajadorUpdate.php?id='. $row['id'] .'" class="badge badge-success">Editar</a></td>';
+                        // // echo '<td><a href="#" class="badge badge-danger">Eliminar</a></td>';
+                        echo '</tr>';                                                                             
+                        $contadorPreguntas++;
+                     }
+                  ?>
+                              
+               </tbody>
+            </table>
+         </div>
+      </div>
+
+
+      
      
    </div> <!-- Cierre container -->
 
